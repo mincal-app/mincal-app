@@ -14,6 +14,13 @@ After being in a Statistics & Probability course in college, I found there are n
 
 That's why I decided to build MinCal, a calculator app that helps you get the job done with a beautiful and intuitive interface for free. No more ugly or too complex calculators for students and professionals. And not this, MinCal is also made to empower its users to find creative solutions to difficult problems and inspire others learn about the wonderful universe they can find in the world of science and mathematics 🧑‍🔬
 
+<div align="center">
+  <br/>
+  <img src="https://user-images.githubusercontent.com/64314452/171905679-94df57aa-b26a-4f73-aff2-6da75bdbcb5f.png" />
+  <br/>
+  <br/>
+</div>
+
 ## Where can I find more about it?
 
 This project is still under construction, however, I expect to upload new updates once the MVP is completed. Until then, keep building great things! :)
