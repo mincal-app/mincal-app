@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="300px"
+        android:layout_width="250px"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_mincal_logo_white"
         app:layout_constraintBottom_toBottomOf="parent"
