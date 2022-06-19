@@ -88,9 +88,7 @@ public class SetName extends Fragment {
                     setName.setBackgroundResource(R.drawable.rounded_button_disabled);
                 } else {
                     setName.setBackgroundResource(R.drawable.rounded_button);
-                    setName.setWidth(nameField.getWidth());
-                    setName.setHeight(nameField.getHeight() + 10);
-                    setName.setPadding(140, 38, 140, 38);
+                    setName.setPadding(0, 0, 0, 6);
                 }
             }
 
@@ -100,9 +98,7 @@ public class SetName extends Fragment {
                     setName.setBackgroundResource(R.drawable.rounded_button_disabled);
                 } else {
                     setName.setBackgroundResource(R.drawable.rounded_button);
-                    setName.setWidth(nameField.getWidth());
-                    setName.setHeight(nameField.getHeight() + 10);
-                    setName.setPadding(140, 38, 140, 38);
+                    setName.setPadding(0, 0, 10, 10);
                 }
             }
         });

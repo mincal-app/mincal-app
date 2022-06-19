@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -50,7 +51,20 @@ public class SetRole extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Views
+
         ImageView arrowBackName = getView().findViewById(R.id.arrow_back_set_name);
+
+        ConstraintLayout studentRole = getView().findViewById(R.id.student_role);
+        ConstraintLayout teacherRole = getView().findViewById(R.id.teacher_role);
+        ConstraintLayout scientistRole = getView().findViewById(R.id.scientist_role);
+        ConstraintLayout individualRole = getView().findViewById(R.id.individual_role);
+
+        // States
+
+        String selectedRole = "";
+
+        // Listeners
 
         arrowBackName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +75,34 @@ public class SetRole extends Fragment {
                 SetRole setRoleFragment = new SetRole();
                 fragmentTransaction.remove(setRoleFragment);
                 fragmentTransaction.replace(R.id.get_started_container, setNameFragment).commit();
+            }
+        });
+
+        studentRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        teacherRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        scientistRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        individualRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
