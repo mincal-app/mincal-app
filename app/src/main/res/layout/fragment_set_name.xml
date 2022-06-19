@@ -38,7 +38,7 @@
         android:fontFamily="@font/montserrat_medium"
         android:text="After all, everyone has an\nidentifier, isn’t it?"
         android:textColor="@color/black"
-        android:textSize="30px"
+        android:textSize="13sp"
         app:layout_constraintBottom_toTopOf="@+id/set_name_field"
         app:layout_constraintStart_toStartOf="@+id/set_name_field"
         app:layout_constraintTop_toBottomOf="@+id/name_title" />
@@ -51,7 +51,7 @@
         android:background="@drawable/rounded_border_field"
         android:ems="10"
         android:paddingLeft="15dp"
-        android:textSize="30px"
+        android:textSize="13sp"
         android:fontFamily="@font/montserrat_semibold"
         android:hint="Type your name"
         app:layout_constraintBottom_toTopOf="@+id/name_set"

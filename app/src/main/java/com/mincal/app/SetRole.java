@@ -15,10 +15,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SetRole extends Fragment {
 
+    // Views
+
+    ConstraintLayout studentRole;
+    ConstraintLayout teacherRole;
+    ConstraintLayout scientistRole;
+    ConstraintLayout individualRole;
+
+    ImageView studentIcon;
+    ImageView teacherIcon;
+    ImageView scientistIcon;
+    ImageView individualIcon;
+
+    TextView studentText;
+    TextView teacherText;
+    TextView scientistText;
+    TextView individualText;
+
+    // Variables
+
+    private static String selectedRole = "";
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -55,14 +78,20 @@ public class SetRole extends Fragment {
 
         ImageView arrowBackName = getView().findViewById(R.id.arrow_back_set_name);
 
-        ConstraintLayout studentRole = getView().findViewById(R.id.student_role);
-        ConstraintLayout teacherRole = getView().findViewById(R.id.teacher_role);
-        ConstraintLayout scientistRole = getView().findViewById(R.id.scientist_role);
-        ConstraintLayout individualRole = getView().findViewById(R.id.individual_role);
+        studentRole = getView().findViewById(R.id.student_role);
+        teacherRole = getView().findViewById(R.id.teacher_role);
+        scientistRole = getView().findViewById(R.id.scientist_role);
+        individualRole = getView().findViewById(R.id.individual_role);
 
-        // States
+        studentIcon = getView().findViewById(R.id.student_icon);
+        teacherIcon = getView().findViewById(R.id.teacher_icon);
+        scientistIcon = getView().findViewById(R.id.scientist_icon);
+        individualIcon = getView().findViewById(R.id.individual_icon);
 
-        String selectedRole = "";
+        studentText = getView().findViewById(R.id.student_text);
+        teacherText = getView().findViewById(R.id.teacher_text);
+        scientistText = getView().findViewById(R.id.scientist_text);
+        individualText = getView().findViewById(R.id.individual_text);
 
         // Listeners
 
@@ -81,30 +110,83 @@ public class SetRole extends Fragment {
         studentRole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                selectedRole = "student";
+                updateRoles();
             }
         });
 
         teacherRole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                selectedRole = "teacher";
+                updateRoles();
             }
         });
 
         scientistRole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                selectedRole = "scientist";
+                updateRoles();
             }
         });
 
         individualRole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                selectedRole = "individual";
+                updateRoles();
             }
         });
+    }
+
+    public void refreshRoles() {
+        studentRole.setBackgroundResource(R.drawable.rounded_border_field);
+        teacherRole.setBackgroundResource(R.drawable.rounded_border_field);
+        scientistRole.setBackgroundResource(R.drawable.rounded_border_field);
+        individualRole.setBackgroundResource(R.drawable.rounded_border_field);
+
+        studentIcon.setImageResource(R.drawable.ic_user_astronaut_solid);
+        teacherIcon.setImageResource(R.drawable.ic_chalkboard_user);
+        scientistIcon.setImageResource(R.drawable.ic_flask);
+        individualIcon.setImageResource(R.drawable.ic_user);
+
+        studentText.setTextColor(getResources().getColor(R.color.black));
+        teacherText.setTextColor(getResources().getColor(R.color.black));
+        scientistText.setTextColor(getResources().getColor(R.color.black));
+        individualText.setTextColor(getResources().getColor(R.color.black));
+
+        studentRole.setPadding(0, 0, 0, 0);
+        teacherRole.setPadding(0, 0, 0, 0);
+        scientistRole.setPadding(0, 0, 0, 0);
+        individualRole.setPadding(0, 0, 0, 0);
+    }
+
+    public void updateRoles() {
+
+        refreshRoles(); // Deselect all roles.
+
+        if (selectedRole == "student") {
+            studentRole.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            studentIcon.setImageResource(R.drawable.ic_user_astronaut_purple);
+            studentText.setTextColor(getResources().getColor(R.color.purple));
+            studentRole.setPadding(0, 0, 10, 10);
+        } else if (selectedRole == "teacher") {
+            teacherRole.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            teacherIcon.setImageResource(R.drawable.ic_chalkboard_user_purple);
+            teacherText.setTextColor(getResources().getColor(R.color.purple));
+            teacherRole.setPadding(0, 0, 10, 10);
+        } else if (selectedRole == "scientist") {
+            scientistRole.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            scientistIcon.setImageResource(R.drawable.ic_flask_purple);
+            scientistText.setTextColor(getResources().getColor(R.color.purple));
+            scientistRole.setPadding(0, 0, 10, 10);
+        } else if (selectedRole == "individual") {
+            individualRole.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            individualIcon.setImageResource(R.drawable.ic_user_purple);
+            individualText.setTextColor(getResources().getColor(R.color.purple));
+            individualRole.setPadding(0, 0, 10, 10);
+        }
     }
 
     @Override
