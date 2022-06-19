@@ -107,6 +107,20 @@ public class SetName extends Fragment {
             }
         });
 
+        setName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!nameField.getText().toString().isEmpty()) {
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    SetRole setRoleFragment = new SetRole();
+                    SetName setNameFragment = new SetName();
+                    fragmentTransaction.remove(setNameFragment);
+                    fragmentTransaction.replace(R.id.get_started_container, setRoleFragment).commit();
+                }
+            }
+        });
+
     }
 
     @Override
