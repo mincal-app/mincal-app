@@ -7,6 +7,7 @@
     tools:context=".SetName">
 
     <ImageView
+        android:id="@+id/arrow_back_home"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_arrow_left_solid"
