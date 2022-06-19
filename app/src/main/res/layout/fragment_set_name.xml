@@ -26,7 +26,7 @@
         android:textSize="44px"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/name_subtitle"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintStart_toStartOf="@+id/set_name_field"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -39,12 +39,12 @@
         android:text="After all, everyone has an\nidentifier, isn’t it?"
         android:textColor="@color/black"
         android:textSize="30px"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/set_name_field"
+        app:layout_constraintStart_toStartOf="@+id/set_name_field"
         app:layout_constraintTop_toBottomOf="@+id/name_title" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/set_name_field"
         android:layout_width="250dp"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
@@ -73,9 +73,9 @@
         android:textColor="@color/black"
         android:textSize="34px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="@+id/set_name_field"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/set_name_field"
+        app:layout_constraintTop_toBottomOf="@+id/set_name_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

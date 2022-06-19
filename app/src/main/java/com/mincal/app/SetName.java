@@ -10,10 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SetName extends Fragment {
 
@@ -51,6 +55,8 @@ public class SetName extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ImageView arrowBackHome = getView().findViewById(R.id.arrow_back_home);
+        EditText nameField = getView().findViewById(R.id.set_name_field);
+        TextView setName = getView().findViewById(R.id.name_set);
 
         arrowBackHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +65,45 @@ public class SetName extends Fragment {
                         android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
                 startActivity(new Intent(getContext(), WelcomeActivity.class), i);
                 getActivity().finish();
+            }
+        });
+
+        // Check if name field is empty, and change background drawable.
+
+        int setNamePaddingHorizontal = setName.getPaddingLeft();
+        int setNamePaddingVertical = setName.getPaddingTop();
+        setName.setWidth(nameField.getWidth());
+        setName.setHeight(nameField.getHeight());
+
+        nameField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                setName.setBackgroundResource(R.drawable.rounded_button_disabled);
+                setName.setPadding(setNamePaddingHorizontal, setNamePaddingVertical, setNamePaddingHorizontal, setNamePaddingVertical);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (nameField.getText().toString().isEmpty()) {
+                    setName.setBackgroundResource(R.drawable.rounded_button_disabled);
+                } else {
+                    setName.setBackgroundResource(R.drawable.rounded_button);
+                    setName.setWidth(nameField.getWidth());
+                    setName.setHeight(nameField.getHeight() + 10);
+                    setName.setPadding(140, 38, 140, 38);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (nameField.getText().toString().isEmpty()) {
+                    setName.setBackgroundResource(R.drawable.rounded_button_disabled);
+                } else {
+                    setName.setBackgroundResource(R.drawable.rounded_button);
+                    setName.setWidth(nameField.getWidth());
+                    setName.setHeight(nameField.getHeight() + 10);
+                    setName.setPadding(140, 38, 140, 38);
+                }
             }
         });
 
