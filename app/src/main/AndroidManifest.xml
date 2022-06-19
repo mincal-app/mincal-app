@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MinCal">
         <activity
+            android:name=".GetStarted"
+            android:exported="false" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="false" />
         <activity
