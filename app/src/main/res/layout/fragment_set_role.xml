@@ -10,16 +10,15 @@
         android:id="@+id/arrow_back_set_name"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/ic_arrow_left_solid"
-        android:layout_marginTop="40dp"
         android:layout_marginLeft="35dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_arrow_left_solid"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/role_title"
         android:layout_width="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:fontFamily="@font/montserrat_bold"
@@ -27,11 +26,13 @@
         android:textColor="@color/black"
         android:textSize="44px"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/role_subtitle"
         app:layout_constraintStart_toEndOf="@+id/arrow_back_set_name"
-        app:layout_constraintTop_toTopOf="@+id/arrow_back_set_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
-        android:id="@+id/name_subtitle"
+        android:id="@+id/role_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -39,173 +40,203 @@
         android:text="Choose the one you identify\nyourself with! :)"
         android:textColor="@color/black"
         android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="@+id/role_title"
         app:layout_constraintTop_toBottomOf="@+id/role_title" />
 
     <!-- Roles -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/student_role"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:id="@+id/constraintLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/role_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/role_subtitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/student_role"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toStartOf="@+id/teacher_role"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/role_subtitle">
+
+            <ImageView
+                android:id="@+id/student_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_user_astronaut_solid"
+                app:layout_constraintBottom_toTopOf="@+id/student_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/student_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Student"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/teacher_role"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/student_role"
+            app:layout_constraintTop_toTopOf="@+id/student_role">
+
+            <ImageView
+                android:id="@+id/teacher_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_chalkboard_user"
+                app:layout_constraintBottom_toTopOf="@+id/teacher_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/teacher_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Teacher"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teacher_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scientist_role"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toEndOf="@+id/student_role"
+            app:layout_constraintEnd_toStartOf="@+id/individual_role"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/student_role">
+
+            <ImageView
+                android:id="@+id/scientist_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_flask"
+                app:layout_constraintBottom_toTopOf="@+id/scientist_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/scientist_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Scientist"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scientist_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/individual_role"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintBottom_toBottomOf="@+id/scientist_role"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/scientist_role"
+            app:layout_constraintTop_toTopOf="@+id/scientist_role">
+
+            <ImageView
+                android:id="@+id/individual_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_user"
+                app:layout_constraintBottom_toTopOf="@+id/individual_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/individual_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Individual"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/individual_icon" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/role_select"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/rounded_border_field"
-        app:layout_constraintEnd_toStartOf="@+id/teacher_role"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_subtitle">
-
-        <ImageView
-            android:id="@+id/student_icon"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_user_astronaut_solid"
-            app:layout_constraintBottom_toTopOf="@+id/student_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/student_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Student"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/student_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/teacher_role"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:background="@drawable/rounded_border_field"
+        android:background="@drawable/rounded_button_disabled"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Let's calculate!"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/student_role"
-        app:layout_constraintTop_toTopOf="@+id/student_role">
-
-        <ImageView
-            android:id="@+id/teacher_icon"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_chalkboard_user"
-            app:layout_constraintBottom_toTopOf="@+id/teacher_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/teacher_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Teacher"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/teacher_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/scientist_role"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/rounded_border_field"
-        app:layout_constraintEnd_toEndOf="@+id/student_role"
-        app:layout_constraintEnd_toStartOf="@+id/individual_role"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_role">
-
-        <ImageView
-            android:id="@+id/scientist_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_flask"
-            app:layout_constraintBottom_toTopOf="@+id/scientist_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/scientist_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Scientist"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scientist_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/individual_role"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:background="@drawable/rounded_border_field"
-        app:layout_constraintBottom_toBottomOf="@+id/scientist_role"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/scientist_role"
-        app:layout_constraintTop_toTopOf="@+id/scientist_role">
-
-        <ImageView
-            android:id="@+id/individual_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_user"
-            app:layout_constraintBottom_toTopOf="@+id/individual_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/individual_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat_semibold"
-            android:text="Individual"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/individual_icon" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

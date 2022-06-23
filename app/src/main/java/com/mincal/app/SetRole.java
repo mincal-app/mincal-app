@@ -35,6 +35,7 @@ public class SetRole extends Fragment {
     TextView teacherText;
     TextView scientistText;
     TextView individualText;
+    TextView selectRole;
 
     // Variables
 
@@ -92,6 +93,7 @@ public class SetRole extends Fragment {
         teacherText = getView().findViewById(R.id.teacher_text);
         scientistText = getView().findViewById(R.id.scientist_text);
         individualText = getView().findViewById(R.id.individual_text);
+        selectRole = getView().findViewById(R.id.role_select);
 
         // Listeners
 
@@ -165,6 +167,11 @@ public class SetRole extends Fragment {
     public void updateRoles() {
 
         refreshRoles(); // Deselect all roles.
+
+        if (!selectedRole.isEmpty()) {
+            selectRole.setBackgroundResource(R.drawable.rounded_button);
+            selectRole.setPadding(0, 0, 10, 10);
+        }
 
         if (selectedRole == "student") {
             studentRole.setBackgroundResource(R.drawable.rounded_border_field_selected);
