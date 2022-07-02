@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/role_select"
+        app:layout_constraintBottom_toTopOf="@+id/color_select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -150,14 +150,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/role_select"
+        android:id="@+id/color_select"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/rounded_button_disabled"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="I'm done!"
+        android:text="I want this color!"
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
