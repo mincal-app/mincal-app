@@ -20,14 +20,13 @@
         android:id="@+id/role_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="What are your study\nfields?"
         android:textColor="@color/black"
         android:textSize="44px"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/role_subtitle"
-        app:layout_constraintStart_toEndOf="@+id/arrow_back_set_role"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
