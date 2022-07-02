@@ -9,8 +9,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class SetColor extends Fragment {
+
+    // Views
+
+    ImageView arrowBackField;
+
+    View orangeColor;
+    View redColor;
+    View purpleColor;
+    View greenColor;
+    View blueColor;
+    View yellowColor;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,6 +59,25 @@ public class SetColor extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        arrowBackField = getView().findViewById(R.id.arrow_back_set_field);
+
+        orangeColor = getView().findViewById(R.id.orange_color);
+        redColor = getView().findViewById(R.id.red_color);
+        purpleColor = getView().findViewById(R.id.purple_color);
+        greenColor = getView().findViewById(R.id.green_color);
+        blueColor = getView().findViewById(R.id.blue_color);
+        yellowColor = getView().findViewById(R.id.yellow_color);
+
+        // Listeners
+
+        arrowBackField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     @Override

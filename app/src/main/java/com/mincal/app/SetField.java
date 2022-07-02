@@ -31,7 +31,6 @@ public class SetField extends Fragment {
 
     // Variables
 
-    private static String selectedField = "";
     private static ArrayList<String> userFields = new ArrayList<>();
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -121,7 +120,14 @@ public class SetField extends Fragment {
         selectField.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (userFields.size() != 0) {
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    SetField setFieldFragment = new SetField();
+                    SetColor setColorFragment = new SetColor();
+                    fragmentTransaction.remove(setFieldFragment);
+                    fragmentTransaction.replace(R.id.get_started_container, setColorFragment).commit();
+                }
             }
         });
 
