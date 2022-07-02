@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SetField">
 
     <ImageView
-        android:id="@+id/arrow_back_set_name"
+        android:id="@+id/arrow_back_set_role"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginLeft="35dp"
@@ -15,4 +16,124 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/role_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="What are your study\nfields?"
+        android:textColor="@color/black"
+        android:textSize="44px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/role_subtitle"
+        app:layout_constraintStart_toEndOf="@+id/arrow_back_set_role"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/role_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="This will help us make a calculator\nbased on your needs!"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="@+id/role_title"
+        app:layout_constraintTop_toBottomOf="@+id/role_title" />
+
+    <!-- Fields -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/fields_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/role_subtitle">
+
+        <TextView
+            android:id="@+id/geometry_field"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_border_field"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center"
+            android:text="Geometry"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/role_subtitle" />
+
+        <TextView
+            android:id="@+id/physics_field"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_border_field"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center"
+            android:text="Physics"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/geometry_field" />
+
+        <TextView
+            android:id="@+id/chemistry_field"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_border_field"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center"
+            android:text="Chemistry"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/physics_field" />
+
+        <TextView
+            android:id="@+id/general_math_field"
+            android:layout_width="250dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_border_field"
+            android:fontFamily="@font/montserrat_semibold"
+            android:gravity="center"
+            android:text="Mathematics in General"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chemistry_field" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/fields_select"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button_disabled"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="Those are my fields!"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

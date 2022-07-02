@@ -140,6 +140,18 @@ public class SetRole extends Fragment {
                 updateRoles();
             }
         });
+
+        selectRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SetField setFieldFragment = new SetField();
+                SetRole setRoleFragment = new SetRole();
+                fragmentTransaction.remove(setRoleFragment);
+                fragmentTransaction.replace(R.id.get_started_container, setFieldFragment).commit();
+            }
+        });
     }
 
     public void refreshRoles() {

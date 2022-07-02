@@ -67,7 +67,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/role_subtitle">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/student_icon"
@@ -230,7 +230,7 @@
         android:background="@drawable/rounded_button_disabled"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="Let's calculate!"
+        android:text="I'm done!"
         android:textColor="@color/black"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -2,25 +2,43 @@ package com.mincal.app;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SetField#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class SetField extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
+    // Views
+
+    ImageView arrowBackRole;
+
+    TextView geometryField;
+    TextView physicsField;
+    TextView chemistryField;
+    TextView generalMathsField;
+    TextView selectField;
+
+    // Variables
+
+    private static String selectedField = "";
+    private static ArrayList<String> userFields = new ArrayList<>();
+
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -28,15 +46,6 @@ public class SetField extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SetField.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SetField newInstance(String param1, String param2) {
         SetField fragment = new SetField();
         Bundle args = new Bundle();
@@ -52,6 +61,91 @@ public class SetField extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        arrowBackRole = getView().findViewById(R.id.arrow_back_set_role);
+
+        geometryField = getView().findViewById(R.id.geometry_field);
+        physicsField = getView().findViewById(R.id.physics_field);
+        chemistryField = getView().findViewById(R.id.chemistry_field);
+        generalMathsField = getView().findViewById(R.id.general_math_field);
+        selectField = getView().findViewById(R.id.fields_select);
+
+        // Listeners
+
+        arrowBackRole.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SetRole setRoleFragment = new SetRole();
+                SetField setFieldFragment = new SetField();
+                fragmentTransaction.remove(setFieldFragment);
+                fragmentTransaction.replace(R.id.get_started_container, setRoleFragment).commit();
+            }
+        });
+
+        geometryField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateField(geometryField, "geometry");
+            }
+        });
+
+        physicsField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateField(physicsField, "physics");
+            }
+        });
+
+        chemistryField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateField(chemistryField, "chemistry");
+            }
+        });
+
+        generalMathsField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateField(generalMathsField, "general_maths");
+            }
+        });
+
+        selectField.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
+
+    // Methods
+
+    public void updateField(TextView fieldView, String fieldName) {
+
+        if (userFields.size() != 0) {
+            selectField.setBackgroundResource(R.drawable.rounded_button);
+            selectField.setPadding(0, 0, 10, 10);
+        }
+
+        if (userFields.contains(fieldName)) {
+            userFields.remove(fieldName);
+            fieldView.setTextColor(getResources().getColor(R.color.black));
+            fieldView.setBackgroundResource(R.drawable.rounded_border_field);
+            fieldView.setPadding(0, 0, 0, 0);
+        } else {
+            userFields.add(fieldName);
+            fieldView.setTextColor(getResources().getColor(R.color.purple));
+            fieldView.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            fieldView.setPadding(0, 0, 10, 10);
         }
     }
 
