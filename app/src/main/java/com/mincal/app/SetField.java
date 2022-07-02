@@ -130,12 +130,6 @@ public class SetField extends Fragment {
     // Methods
 
     public void updateField(TextView fieldView, String fieldName) {
-
-        if (userFields.size() != 0) {
-            selectField.setBackgroundResource(R.drawable.rounded_button);
-            selectField.setPadding(0, 0, 10, 10);
-        }
-
         if (userFields.contains(fieldName)) {
             userFields.remove(fieldName);
             fieldView.setTextColor(getResources().getColor(R.color.black));
@@ -146,6 +140,14 @@ public class SetField extends Fragment {
             fieldView.setTextColor(getResources().getColor(R.color.purple));
             fieldView.setBackgroundResource(R.drawable.rounded_border_field_selected);
             fieldView.setPadding(0, 0, 10, 10);
+        }
+
+        if (userFields.size() != 0) {
+            selectField.setBackgroundResource(R.drawable.rounded_button);
+            selectField.setPadding(0, 0, 10, 10);
+        } else if (userFields.size() == 0) {
+            selectField.setBackgroundResource(R.drawable.rounded_button_disabled);
+            selectField.setPadding(0, 0, 0, 0);
         }
     }
 
