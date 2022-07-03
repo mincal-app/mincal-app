@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetPowertools">
+
+    <ImageView
+        android:id="@+id/arrow_back_set_name"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_arrow_left_solid"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Title -->
+
+    <TextView
+        android:id="@+id/powertools_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Choose your\nPowerTools"
+        android:textColor="@color/black"
+        android:textSize="44px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/powertools_subtitle"
+        app:layout_constraintStart_toStartOf="@+id/powertools_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/powertools_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="These will boost your calculator\nby offering you the tools you\nneed for your fields."
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/powertools_container"
+        app:layout_constraintStart_toStartOf="@+id/powertools_title"
+        app:layout_constraintTop_toBottomOf="@+id/powertools_title" />
+
+    <!-- PowerTools -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/powertools_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/role_select"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/powertools_subtitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/geometry_set"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/geometry_set_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="The Geometry\nof Madness"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/geometry_set_icon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/geometry_set_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_meteor"
+                app:layout_constraintBottom_toBottomOf="@+id/geometry_set_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/geometry_set_text"
+                app:layout_constraintTop_toTopOf="@+id/geometry_set_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statistics_percom_set"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/geometry_set">
+
+            <TextView
+                android:id="@+id/statistics_percom_set_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Permutations &amp;\nCombinations"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_percom_set_icon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/statistics_percom_set_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_cubes"
+                app:layout_constraintBottom_toBottomOf="@+id/statistics_percom_set_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/statistics_percom_set_text"
+                app:layout_constraintTop_toTopOf="@+id/statistics_percom_set_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/algebra_set"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_border_field"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statistics_percom_set">
+
+            <TextView
+                android:id="@+id/algebra_set_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Algebraic\nRocket"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/algebra_set_icon"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/algebra_set_icon"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/ic_rocket"
+                app:layout_constraintBottom_toBottomOf="@+id/algebra_set_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/algebra_set_text"
+                app:layout_constraintTop_toTopOf="@+id/algebra_set_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Set PowerTools Button -->
+
+    <TextView
+        android:id="@+id/role_select"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button_disabled"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="I'm ready!"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/powertools_container" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
