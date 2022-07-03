@@ -4,13 +4,38 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SetPowertools extends Fragment {
+
+    // Views
+
+    ImageView arrowBackColor;
+
+    ConstraintLayout studentRole;
+    ConstraintLayout teacherRole;
+    ConstraintLayout scientistRole;
+    ConstraintLayout individualRole;
+
+    ImageView studentIcon;
+    ImageView teacherIcon;
+    ImageView scientistIcon;
+    ImageView individualIcon;
+
+    TextView studentText;
+    TextView teacherText;
+    TextView scientistText;
+    TextView individualText;
+    TextView selectPowertools;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,6 +69,20 @@ public class SetPowertools extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        arrowBackColor = getView().findViewById(R.id.arrow_back_set_color);
+
+        arrowBackColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                SetColor setColorFragment = new SetColor();
+                SetPowertools setPowertoolsFragment = new SetPowertools();
+                fragmentTransaction.remove(setPowertoolsFragment);
+                fragmentTransaction.replace(R.id.get_started_container, setColorFragment).commit();
+            }
+        });
     }
 
     @Override

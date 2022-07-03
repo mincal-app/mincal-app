@@ -7,7 +7,7 @@
     tools:context=".SetPowertools">
 
     <ImageView
-        android:id="@+id/arrow_back_set_name"
+        android:id="@+id/arrow_back_set_color"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:layout_marginLeft="35dp"
