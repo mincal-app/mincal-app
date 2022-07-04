@@ -141,6 +141,20 @@ public class SetColor extends Fragment {
             }
         });
 
+        selectColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!selectedColor.isEmpty()) {
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    SetPowertools setPowertoolsFragment = new SetPowertools();
+                    SetColor setColorFragment = new SetColor();
+                    fragmentTransaction.remove(setColorFragment);
+                    fragmentTransaction.replace(R.id.get_started_container, setPowertoolsFragment).commit();
+                }
+            }
+        });
+
     }
 
     public void refreshRoles() {

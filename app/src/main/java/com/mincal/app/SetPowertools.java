@@ -15,27 +15,30 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class SetPowertools extends Fragment {
 
     // Views
 
     ImageView arrowBackColor;
 
-    ConstraintLayout studentRole;
-    ConstraintLayout teacherRole;
-    ConstraintLayout scientistRole;
-    ConstraintLayout individualRole;
+    ConstraintLayout geometrySet;
+    ConstraintLayout statisticsSet;
+    ConstraintLayout algebraSet;
 
-    ImageView studentIcon;
-    ImageView teacherIcon;
-    ImageView scientistIcon;
-    ImageView individualIcon;
+    ImageView geometrySetIcon;
+    ImageView statisticsSetIcon;
+    ImageView algebraSetIcon;
 
-    TextView studentText;
-    TextView teacherText;
-    TextView scientistText;
-    TextView individualText;
+    TextView geometrySetText;
+    TextView statisticsSetText;
+    TextView algebraSetText;
     TextView selectPowertools;
+
+    // Variables
+
+    private static ArrayList<String> userPowertools = new ArrayList<>();
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -72,6 +75,22 @@ public class SetPowertools extends Fragment {
 
         arrowBackColor = getView().findViewById(R.id.arrow_back_set_color);
 
+        geometrySet = getView().findViewById(R.id.geometry_set);
+        statisticsSet = getView().findViewById(R.id.statistics_percom_set);
+        algebraSet = getView().findViewById(R.id.algebra_set);
+
+        geometrySetIcon = getView().findViewById(R.id.geometry_set_icon);
+        statisticsSetIcon = getView().findViewById(R.id.statistics_percom_set_icon);
+        algebraSetIcon = getView().findViewById(R.id.algebra_set_icon);
+
+        geometrySetText = getView().findViewById(R.id.geometry_set_text);
+        statisticsSetText = getView().findViewById(R.id.statistics_percom_set_text);
+        algebraSetText = getView().findViewById(R.id.algebra_set_text);
+
+        selectPowertools = getView().findViewById(R.id.powertool_select);
+
+        // Listeners
+
         arrowBackColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +102,51 @@ public class SetPowertools extends Fragment {
                 fragmentTransaction.replace(R.id.get_started_container, setColorFragment).commit();
             }
         });
+
+        geometrySet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updatePowertools(geometrySet, geometrySetText, geometrySetIcon, "geometry_set");
+            }
+        });
+
+        statisticsSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updatePowertools(statisticsSet, statisticsSetText, statisticsSetIcon, "statistics_set");
+            }
+        });
+
+        algebraSet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updatePowertools(algebraSet, algebraSetText, algebraSetIcon, "algebra_set");
+            }
+        });
+    }
+
+    // Methods
+
+    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, ImageView powertoolIcon, String powertoolName) {
+        if (userPowertools.contains(powertoolName)) {
+            userPowertools.remove(powertoolName);
+            powertoolTextView.setTextColor(getResources().getColor(R.color.black));
+            powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field);
+            powertoolContainer.setPadding(0, 0, 0, 0);
+        } else {
+            userPowertools.add(powertoolName);
+            powertoolTextView.setTextColor(getResources().getColor(R.color.purple));
+            powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            powertoolContainer.setPadding(0, 0, 10, 10);
+        }
+
+        if (userPowertools.size() != 0) {
+            selectPowertools.setBackgroundResource(R.drawable.rounded_button);
+            selectPowertools.setPadding(0, 0, 10, 10);
+        } else if (userPowertools.size() == 0) {
+            selectPowertools.setBackgroundResource(R.drawable.rounded_button_disabled);
+            selectPowertools.setPadding(0, 0, 0, 0);
+        }
     }
 
     @Override
