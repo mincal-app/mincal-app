@@ -1,6 +1,8 @@
 package com.mincal.app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,10 @@ public class SetRole extends Fragment {
     TextView scientistText;
     TextView individualText;
     TextView selectRole;
+
+    // TinyDB
+
+    TinyDB tinydb;
 
     // Variables
 
@@ -74,6 +80,10 @@ public class SetRole extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
 
         // Views
 
@@ -144,12 +154,22 @@ public class SetRole extends Fragment {
         selectRole.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                SetField setFieldFragment = new SetField();
-                SetRole setRoleFragment = new SetRole();
-                fragmentTransaction.remove(setRoleFragment);
-                fragmentTransaction.replace(R.id.get_started_container, setFieldFragment).commit();
+
+                if (!selectedRole.isEmpty()) {
+
+                    // Saving user role.
+
+                    setRole(selectedRole);
+
+                    // Removing current fragment and applying the next one.
+
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    SetField setFieldFragment = new SetField();
+                    SetRole setRoleFragment = new SetRole();
+                    fragmentTransaction.remove(setRoleFragment);
+                    fragmentTransaction.replace(R.id.get_started_container, setFieldFragment).commit();
+                }
             }
         });
     }
@@ -206,6 +226,10 @@ public class SetRole extends Fragment {
             individualText.setTextColor(getResources().getColor(R.color.purple));
             individualRole.setPadding(0, 0, 10, 10);
         }
+    }
+
+    private void setRole(String role) {
+        tinydb.putString("user_role", role);
     }
 
     @Override

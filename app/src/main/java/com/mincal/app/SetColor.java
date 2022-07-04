@@ -1,5 +1,6 @@
 package com.mincal.app;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,10 @@ public class SetColor extends Fragment {
     View yellowColor;
 
     TextView selectColor;
+
+    // TinyDB
+
+    TinyDB tinydb;
 
     // Variables
 
@@ -67,6 +72,12 @@ public class SetColor extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+
+        // Views
 
         arrowBackField = getView().findViewById(R.id.arrow_back_set_field);
 
@@ -145,6 +156,13 @@ public class SetColor extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!selectedColor.isEmpty()) {
+
+                    // Saving user preferred color.
+
+                    setColor(selectedColor);
+
+                    // Removing current fragment and applying the next one.
+
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     SetPowertools setPowertoolsFragment = new SetPowertools();
@@ -188,6 +206,10 @@ public class SetColor extends Fragment {
         } else if (selectedColor == "yellow") {
             yellowColor.setBackgroundResource(R.drawable.yellow_orb_selected);
         }
+    }
+
+    private void setColor(String color) {
+        tinydb.putString("user_color", color);
     }
 
     @Override

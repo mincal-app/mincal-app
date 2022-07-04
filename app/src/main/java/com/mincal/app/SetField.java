@@ -1,5 +1,7 @@
 package com.mincal.app;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,10 @@ public class SetField extends Fragment {
     TextView chemistryField;
     TextView generalMathsField;
     TextView selectField;
+
+    // TinyDB
+
+    TinyDB tinydb;
 
     // Variables
 
@@ -66,6 +72,21 @@ public class SetField extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+
+        // TODO: Implement data-retrieving with the following comment:
+
+        /** Getting data from TinyDB
+
+        int dataint = tinyDB.getInt("clickCount");
+        String datastring = tinyDB.getString("userName");
+
+         **/
+
+        // Views
 
         arrowBackRole = getView().findViewById(R.id.arrow_back_set_role);
 
@@ -121,6 +142,13 @@ public class SetField extends Fragment {
             @Override
             public void onClick(View view) {
                 if (userFields.size() != 0) {
+
+                    // Saving user fields.
+
+                    setFields(userFields);
+
+                    // Removing current fragment and applying the next one.
+
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     SetField setFieldFragment = new SetField();
@@ -130,7 +158,6 @@ public class SetField extends Fragment {
                 }
             }
         });
-
     }
 
     // Methods
@@ -155,6 +182,10 @@ public class SetField extends Fragment {
             selectField.setBackgroundResource(R.drawable.rounded_button_disabled);
             selectField.setPadding(0, 0, 0, 0);
         }
+    }
+
+    private void setFields(ArrayList<String> fields) {
+        tinydb.putListString("user_fields", fields);
     }
 
     @Override

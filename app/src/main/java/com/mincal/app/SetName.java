@@ -1,6 +1,8 @@
 package com.mincal.app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SetName extends Fragment {
+
+    // TinyDB
+
+    TinyDB tinydb;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -54,6 +60,12 @@ public class SetName extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+
+        // Views
+
         ImageView arrowBackHome = getView().findViewById(R.id.arrow_back_home);
         EditText nameField = getView().findViewById(R.id.set_name_field);
         TextView setName = getView().findViewById(R.id.name_set);
@@ -74,6 +86,8 @@ public class SetName extends Fragment {
         int setNamePaddingVertical = setName.getPaddingTop();
         setName.setWidth(nameField.getWidth());
         setName.setHeight(nameField.getHeight());
+
+        // Changing the state of the Next button if user has entered any input on the field.
 
         nameField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -107,6 +121,13 @@ public class SetName extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!nameField.getText().toString().isEmpty()) {
+
+                    // Saving user name.
+
+                    setName(nameField.getText().toString().trim());
+
+                    // Removing current fragment and applying the next one.
+
                     FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     SetRole setRoleFragment = new SetRole();
@@ -116,7 +137,10 @@ public class SetName extends Fragment {
                 }
             }
         });
+    }
 
+    private void setName(String name) {
+        tinydb.putString("user_name", name);
     }
 
     @Override

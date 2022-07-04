@@ -1,5 +1,6 @@
 package com.mincal.app;
 
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -37,6 +38,10 @@ public class SetPowertools extends Fragment {
     TextView algebraSetText;
     TextView selectPowertools;
 
+    // TinyDB
+
+    TinyDB tinydb;
+
     // Variables
 
     private static ArrayList<String> userPowertools = new ArrayList<>();
@@ -73,6 +78,12 @@ public class SetPowertools extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+
+        // Views
 
         arrowBackColor = getView().findViewById(R.id.arrow_back_set_color);
 
@@ -133,6 +144,27 @@ public class SetPowertools extends Fragment {
                 updatePowertools(algebraSet, algebraSetText, algebraSetIcon, algebraIconSelected, algebraIconUnselected, "algebra_set");
             }
         });
+
+        selectPowertools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!userPowertools.isEmpty()) {
+
+                    // Saving the user's powertools.
+
+                    setPowertools(userPowertools);
+
+                    // Removing current fragment and applying the next one.
+
+                    FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    SetPowertools setPowertoolsFragment = new SetPowertools();
+                    SettingMinCal buildingMincalFragment = new SettingMinCal();
+                    fragmentTransaction.remove(setPowertoolsFragment);
+                    fragmentTransaction.replace(R.id.get_started_container, buildingMincalFragment).commit();
+                }
+            }
+        });
     }
 
     // Methods
@@ -159,6 +191,10 @@ public class SetPowertools extends Fragment {
             selectPowertools.setBackgroundResource(R.drawable.rounded_button_disabled);
             selectPowertools.setPadding(0, 0, 0, 0);
         }
+    }
+
+    private void setPowertools(ArrayList<String> powertools) {
+        tinydb.putListString("user_powertools", powertools);
     }
 
     @Override
