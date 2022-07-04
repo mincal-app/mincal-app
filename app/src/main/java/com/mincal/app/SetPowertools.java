@@ -1,5 +1,6 @@
 package com.mincal.app;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -89,6 +90,15 @@ public class SetPowertools extends Fragment {
 
         selectPowertools = getView().findViewById(R.id.powertool_select);
 
+        // Resources
+
+        int geometryIconUnselected = R.drawable.ic_meteor;
+        int statisticsIconUnselected = R.drawable.ic_cubes;
+        int algebraIconUnselected = R.drawable.ic_rocket;
+        int geometryIconSelected = R.drawable.ic_meteor_purple;
+        int statisticsIconSelected = R.drawable.ic_cubes_purple;
+        int algebraIconSelected = R.drawable.ic_rocket_purple;
+
         // Listeners
 
         arrowBackColor.setOnClickListener(new View.OnClickListener() {
@@ -106,37 +116,39 @@ public class SetPowertools extends Fragment {
         geometrySet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(geometrySet, geometrySetText, geometrySetIcon, "geometry_set");
+                updatePowertools(geometrySet, geometrySetText, geometrySetIcon, geometryIconSelected, geometryIconUnselected, "geometry_set");
             }
         });
 
         statisticsSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(statisticsSet, statisticsSetText, statisticsSetIcon, "statistics_set");
+                updatePowertools(statisticsSet, statisticsSetText, statisticsSetIcon, statisticsIconSelected, statisticsIconUnselected, "statistics_set");
             }
         });
 
         algebraSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(algebraSet, algebraSetText, algebraSetIcon, "algebra_set");
+                updatePowertools(algebraSet, algebraSetText, algebraSetIcon, algebraIconSelected, algebraIconUnselected, "algebra_set");
             }
         });
     }
 
     // Methods
 
-    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, ImageView powertoolIcon, String powertoolName) {
+    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, ImageView powertoolIcon, int selectedIcon, int unselectedIcon, String powertoolName) {
         if (userPowertools.contains(powertoolName)) {
             userPowertools.remove(powertoolName);
             powertoolTextView.setTextColor(getResources().getColor(R.color.black));
             powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field);
+            powertoolIcon.setImageResource(unselectedIcon);
             powertoolContainer.setPadding(0, 0, 0, 0);
         } else {
             userPowertools.add(powertoolName);
             powertoolTextView.setTextColor(getResources().getColor(R.color.purple));
             powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            powertoolIcon.setImageResource(selectedIcon);
             powertoolContainer.setPadding(0, 0, 10, 10);
         }
 
