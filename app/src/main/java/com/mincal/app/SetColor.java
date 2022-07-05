@@ -1,13 +1,19 @@
 package com.mincal.app;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +33,17 @@ public class SetColor extends Fragment {
     View blueColor;
     View yellowColor;
 
+    TextView colorTitle;
     TextView selectColor;
 
     // TinyDB
 
     TinyDB tinydb;
+
+    // Text span
+
+    SpannableString stringSpan;
+    ForegroundColorSpan stringColor;
 
     // Variables
 
@@ -85,7 +97,16 @@ public class SetColor extends Fragment {
         blueColor = getView().findViewById(R.id.blue_color);
         yellowColor = getView().findViewById(R.id.yellow_color);
 
+        colorTitle = getView().findViewById(R.id.color_title);
         selectColor = getView().findViewById(R.id.color_select);
+
+        // Setting the text span
+
+        String colorSpan = "Which color do you\nlike?";
+        stringSpan = new SpannableString(colorSpan);
+        stringColor = new ForegroundColorSpan(0xFF000000);
+
+        updateTextSpan(stringSpan, stringColor, colorTitle);
 
         // Listeners
 
@@ -187,28 +208,53 @@ public class SetColor extends Fragment {
         if (selectedColor == "orange") {
             orangeColor.setBackgroundResource(R.drawable.orange_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_orange);
+            stringColor = new ForegroundColorSpan(0xFFF18F01);
             selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "red") {
             redColor.setBackgroundResource(R.drawable.red_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_red);
+            stringColor = new ForegroundColorSpan(0xFFEC0B43);
             selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "purple") {
             purpleColor.setBackgroundResource(R.drawable.purple_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_purple);
+            stringColor = new ForegroundColorSpan(0xFF8702F5);
             selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "green") {
             greenColor.setBackgroundResource(R.drawable.green_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_green);
+            stringColor = new ForegroundColorSpan(0xFF04E762);
             selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "blue") {
             blueColor.setBackgroundResource(R.drawable.blue_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_blue);
+            stringColor = new ForegroundColorSpan(0xFF5DD9C1);
             selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "yellow") {
             yellowColor.setBackgroundResource(R.drawable.yellow_orb_selected);
             selectColor.setBackgroundResource(R.drawable.rounded_button_yellow);
+            stringColor = new ForegroundColorSpan(0xFFF5DD02);
             selectColor.setPadding(0, 0, 10, 10);
         }
+
+        updateTextSpan(stringSpan, stringColor, colorTitle);
+    }
+
+    private void updateTextSpan(SpannableString span, ForegroundColorSpan color, TextView view) {
+
+        // Typeface in order to change text font.
+
+        Typeface face = ResourcesCompat.getFont(getContext(), R.font.montserrat_bold);
+        StyleSpan montSemiBold = new StyleSpan(face.getStyle());
+
+        // SpannableString
+
+        span.setSpan(color, 6, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Apply color to span
+        span.setSpan(montSemiBold, 6, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Apply font to span
+
+        // Change TextView to Colored One
+
+        view.setText(stringSpan);
     }
 
     private void setColor(String color) {
