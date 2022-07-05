@@ -1,12 +1,9 @@
 package com.mincal.app;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -171,7 +168,7 @@ public class SetField extends Fragment {
         } else {
             userFields.add(fieldName);
             fieldView.setTextColor(getResources().getColor(R.color.purple));
-            fieldView.setBackgroundResource(R.drawable.rounded_border_field_selected);
+            fieldView.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
             fieldView.setPadding(0, 0, 10, 10);
         }
 

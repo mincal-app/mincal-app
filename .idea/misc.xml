@@ -15,6 +15,15 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/MinCal/app/src/main/res/layout/fragment_set_role.xml" value="0.22" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MinCal/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/MinCal/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.117" />
+        <entry key="app/src/main/res/drawable/rounded_border_field.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected_blue.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected_green.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected_orange.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected_red.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_border_field_selected_yellow.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_button_disabled.xml" value="0.196" />
         <entry key="app/src/main/res/layout/fragment_set_field.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_powertools.xml" value="0.2759259259259259" />
         <entry key="app/src/main/res/layout/fragment_set_role.xml" value="0.41016387939453125" />

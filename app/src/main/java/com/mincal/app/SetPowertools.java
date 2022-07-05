@@ -1,7 +1,5 @@
 package com.mincal.app;
 
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,9 +36,15 @@ public class SetPowertools extends Fragment {
     TextView algebraSetText;
     TextView selectPowertools;
 
+    // Resources
+
+    int viewFrame;
+    int uiColor;
+
     // TinyDB
 
     TinyDB tinydb;
+    String userColor;
 
     // Variables
 
@@ -82,6 +86,7 @@ public class SetPowertools extends Fragment {
         // Instance of SharedPreferences to store the user's name.
 
         tinydb = new TinyDB(getContext());
+        userColor = tinydb.getString("user_color");
 
         // Views
 
@@ -91,24 +96,36 @@ public class SetPowertools extends Fragment {
         statisticsSet = getView().findViewById(R.id.statistics_percom_set);
         algebraSet = getView().findViewById(R.id.algebra_set);
 
-        geometrySetIcon = getView().findViewById(R.id.geometry_set_icon);
-        statisticsSetIcon = getView().findViewById(R.id.statistics_percom_set_icon);
-        algebraSetIcon = getView().findViewById(R.id.algebra_set_icon);
-
         geometrySetText = getView().findViewById(R.id.geometry_set_text);
         statisticsSetText = getView().findViewById(R.id.statistics_percom_set_text);
         algebraSetText = getView().findViewById(R.id.algebra_set_text);
 
         selectPowertools = getView().findViewById(R.id.powertool_select);
 
-        // Resources
+        // Based on the user selected color, set the color variation for each icon.
 
-        int geometryIconUnselected = R.drawable.ic_meteor;
-        int statisticsIconUnselected = R.drawable.ic_cubes;
-        int algebraIconUnselected = R.drawable.ic_rocket;
-        int geometryIconSelected = R.drawable.ic_meteor_purple;
-        int statisticsIconSelected = R.drawable.ic_cubes_purple;
-        int algebraIconSelected = R.drawable.ic_rocket_purple;
+        if (userColor == "purple") {
+            uiColor = getResources().getColor(R.color.purple);
+            viewFrame = R.drawable.rounded_border_field_selected_purple;
+        } else if (userColor == "orange") {
+            uiColor = getResources().getColor(R.color.orange);
+            viewFrame = R.drawable.rounded_border_field_selected_orange;
+        } else if (userColor == "red") {
+            uiColor = getResources().getColor(R.color.red);
+            viewFrame = R.drawable.rounded_border_field_selected_red;
+        } else if (userColor == "green") {
+            uiColor = getResources().getColor(R.color.green);
+            viewFrame = R.drawable.rounded_border_field_selected_green;
+        } else if (userColor == "blue") {
+            uiColor = getResources().getColor(R.color.blue);
+            viewFrame = R.drawable.rounded_border_field_selected_blue;
+        } else if (userColor == "yellow") {
+            uiColor = getResources().getColor(R.color.yellow);
+            viewFrame = R.drawable.rounded_border_field_selected_yellow;
+        } else {
+            uiColor = getResources().getColor(R.color.purple);
+            viewFrame = R.drawable.rounded_border_field_selected_purple;
+        }
 
         // Listeners
 
@@ -127,21 +144,21 @@ public class SetPowertools extends Fragment {
         geometrySet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(geometrySet, geometrySetText, geometrySetIcon, geometryIconSelected, geometryIconUnselected, "geometry_set");
+                updatePowertools(geometrySet, geometrySetText, viewFrame, "geometry_set");
             }
         });
 
         statisticsSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(statisticsSet, statisticsSetText, statisticsSetIcon, statisticsIconSelected, statisticsIconUnselected, "statistics_set");
+                updatePowertools(statisticsSet, statisticsSetText, viewFrame, "statistics_set");
             }
         });
 
         algebraSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(algebraSet, algebraSetText, algebraSetIcon, algebraIconSelected, algebraIconUnselected, "algebra_set");
+                updatePowertools(algebraSet, algebraSetText, viewFrame, "algebra_set");
             }
         });
 
@@ -169,18 +186,15 @@ public class SetPowertools extends Fragment {
 
     // Methods
 
-    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, ImageView powertoolIcon, int selectedIcon, int unselectedIcon, String powertoolName) {
+    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, int powertoolFrame, String powertoolName) {
         if (userPowertools.contains(powertoolName)) {
             userPowertools.remove(powertoolName);
             powertoolTextView.setTextColor(getResources().getColor(R.color.black));
             powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field);
-            powertoolIcon.setImageResource(unselectedIcon);
             powertoolContainer.setPadding(0, 0, 0, 0);
         } else {
             userPowertools.add(powertoolName);
-            powertoolTextView.setTextColor(getResources().getColor(R.color.purple));
-            powertoolContainer.setBackgroundResource(R.drawable.rounded_border_field_selected);
-            powertoolIcon.setImageResource(selectedIcon);
+            powertoolContainer.setBackgroundResource(powertoolFrame);
             powertoolContainer.setPadding(0, 0, 10, 10);
         }
 
