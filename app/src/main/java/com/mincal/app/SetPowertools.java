@@ -35,6 +35,7 @@ public class SetPowertools extends Fragment {
     // Resources
 
     int viewFrame;
+    int buttonFrame;
     int uiColor;
 
     // TinyDB
@@ -103,24 +104,31 @@ public class SetPowertools extends Fragment {
         if (userColor == "purple") {
             uiColor = getResources().getColor(R.color.purple);
             viewFrame = R.drawable.rounded_border_field_selected_purple;
+            buttonFrame = R.drawable.rounded_button_purple;
         } else if (userColor == "orange") {
             uiColor = getResources().getColor(R.color.orange);
             viewFrame = R.drawable.rounded_border_field_selected_orange;
+            buttonFrame = R.drawable.rounded_button_orange;
         } else if (userColor == "red") {
             uiColor = getResources().getColor(R.color.red);
             viewFrame = R.drawable.rounded_border_field_selected_red;
+            buttonFrame = R.drawable.rounded_button_red;
         } else if (userColor == "green") {
             uiColor = getResources().getColor(R.color.green);
             viewFrame = R.drawable.rounded_border_field_selected_green;
+            buttonFrame = R.drawable.rounded_button_green;
         } else if (userColor == "blue") {
             uiColor = getResources().getColor(R.color.blue);
             viewFrame = R.drawable.rounded_border_field_selected_blue;
+            buttonFrame = R.drawable.rounded_button_blue;
         } else if (userColor == "yellow") {
             uiColor = getResources().getColor(R.color.yellow);
             viewFrame = R.drawable.rounded_border_field_selected_yellow;
+            buttonFrame = R.drawable.rounded_button_yellow;
         } else {
             uiColor = getResources().getColor(R.color.purple);
             viewFrame = R.drawable.rounded_border_field_selected_purple;
+            buttonFrame = R.drawable.rounded_button_purple;
         }
 
         // Listeners
@@ -140,21 +148,21 @@ public class SetPowertools extends Fragment {
         geometrySet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(geometrySet, geometrySetText, viewFrame, "geometry_set");
+                updatePowertools(geometrySet, geometrySetText, viewFrame, buttonFrame, "geometry_set");
             }
         });
 
         statisticsSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(statisticsSet, statisticsSetText, viewFrame, "statistics_set");
+                updatePowertools(statisticsSet, statisticsSetText, viewFrame, buttonFrame, "statistics_set");
             }
         });
 
         algebraSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updatePowertools(algebraSet, algebraSetText, viewFrame, "algebra_set");
+                updatePowertools(algebraSet, algebraSetText, viewFrame, buttonFrame, "algebra_set");
             }
         });
 
@@ -182,7 +190,7 @@ public class SetPowertools extends Fragment {
 
     // Methods
 
-    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, int powertoolFrame, String powertoolName) {
+    public void updatePowertools(ConstraintLayout powertoolContainer, TextView powertoolTextView, int powertoolFrame, int buttonFrame, String powertoolName) {
         if (userPowertools.contains(powertoolName)) {
             userPowertools.remove(powertoolName);
             powertoolTextView.setTextColor(getResources().getColor(R.color.black));
@@ -195,7 +203,7 @@ public class SetPowertools extends Fragment {
         }
 
         if (userPowertools.size() != 0) {
-            selectPowertools.setBackgroundResource(R.drawable.rounded_button_purple);
+            selectPowertools.setBackgroundResource(buttonFrame);
             selectPowertools.setPadding(0, 0, 10, 10);
         } else if (userPowertools.size() == 0) {
             selectPowertools.setBackgroundResource(R.drawable.rounded_button_disabled);
