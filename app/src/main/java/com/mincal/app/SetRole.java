@@ -203,23 +203,15 @@ public class SetRole extends Fragment {
 
         if (selectedRole == "student") {
             studentRole.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
-            studentIcon.setImageResource(R.drawable.ic_user_astronaut_purple);
-            studentText.setTextColor(getResources().getColor(R.color.purple));
             studentRole.setPadding(0, 0, 10, 10);
         } else if (selectedRole == "teacher") {
             teacherRole.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
-            teacherIcon.setImageResource(R.drawable.ic_chalkboard_user_purple);
-            teacherText.setTextColor(getResources().getColor(R.color.purple));
             teacherRole.setPadding(0, 0, 10, 10);
         } else if (selectedRole == "scientist") {
             scientistRole.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
-            scientistIcon.setImageResource(R.drawable.ic_flask_purple);
-            scientistText.setTextColor(getResources().getColor(R.color.purple));
             scientistRole.setPadding(0, 0, 10, 10);
         } else if (selectedRole == "individual") {
             individualRole.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
-            individualIcon.setImageResource(R.drawable.ic_user_purple);
-            individualText.setTextColor(getResources().getColor(R.color.purple));
             individualRole.setPadding(0, 0, 10, 10);
         }
     }
