@@ -10,13 +10,18 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 public class SettingMinCal extends Fragment {
 
-    // Data Variables
+    // Views
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    ImageView magicWand;
+
+    // TinyDB
+
+    TinyDB tinydb;
+    String userColor;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -50,6 +55,33 @@ public class SettingMinCal extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+        userColor = tinydb.getString("user_color");
+
+        // Views
+
+        magicWand = getView().findViewById(R.id.setting_mincal_wand);
+
+        // Set wand and text color according to user selected color.
+
+        if (userColor == "purple") {
+            magicWand.setImageResource(R.drawable.ic_wand_purple);
+        } else if (userColor == "orange") {
+            magicWand.setImageResource(R.drawable.ic_wand_orange);
+        } else if (userColor == "red") {
+            magicWand.setImageResource(R.drawable.ic_wand_red);
+        } else if (userColor == "green") {
+            magicWand.setImageResource(R.drawable.ic_wand_green);
+        } else if (userColor == "blue") {
+            magicWand.setImageResource(R.drawable.ic_wand_blue);
+        } else if (userColor == "yellow") {
+            magicWand.setImageResource(R.drawable.ic_wand_yellow);
+        } else {
+            magicWand.setImageResource(R.drawable.ic_wand);
+        }
     }
 
     @Override
