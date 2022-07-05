@@ -195,7 +195,7 @@ public class SetPowertools extends Fragment {
         }
 
         if (userPowertools.size() != 0) {
-            selectPowertools.setBackgroundResource(R.drawable.rounded_button);
+            selectPowertools.setBackgroundResource(R.drawable.rounded_button_purple);
             selectPowertools.setPadding(0, 0, 10, 10);
         } else if (userPowertools.size() == 0) {
             selectPowertools.setBackgroundResource(R.drawable.rounded_button_disabled);

@@ -1,8 +1,6 @@
 package com.mincal.app;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -101,7 +99,7 @@ public class SetName extends Fragment {
                 if (nameField.getText().toString().isEmpty()) {
                     setName.setBackgroundResource(R.drawable.rounded_button_disabled);
                 } else {
-                    setName.setBackgroundResource(R.drawable.rounded_button);
+                    setName.setBackgroundResource(R.drawable.rounded_button_purple);
                     setName.setPadding(0, 0, 0, 6);
                 }
             }
@@ -111,7 +109,7 @@ public class SetName extends Fragment {
                 if (nameField.getText().toString().isEmpty()) {
                     setName.setBackgroundResource(R.drawable.rounded_button_disabled);
                 } else {
-                    setName.setBackgroundResource(R.drawable.rounded_button);
+                    setName.setBackgroundResource(R.drawable.rounded_button_purple);
                     setName.setPadding(0, 0, 10, 10);
                 }
             }

@@ -162,7 +162,7 @@ public class SetField extends Fragment {
         }
 
         if (userFields.size() != 0) {
-            selectField.setBackgroundResource(R.drawable.rounded_button);
+            selectField.setBackgroundResource(R.drawable.rounded_button_purple);
             selectField.setPadding(0, 0, 10, 10);
         } else if (userFields.size() == 0) {
             selectField.setBackgroundResource(R.drawable.rounded_button_disabled);

@@ -23,7 +23,14 @@
         <entry key="app/src/main/res/drawable/rounded_border_field_selected_red.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_border_field_selected_yellow.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_button_blue.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_button_disabled.xml" value="0.196" />
+        <entry key="app/src/main/res/drawable/rounded_button_greeen.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/rounded_button_orange.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/rounded_button_purple.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/rounded_button_red.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/rounded_button_yellow.xml" value="0.189" />
+        <entry key="app/src/main/res/layout/fragment_set_color.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_field.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_name.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_powertools.xml" value="0.2759259259259259" />

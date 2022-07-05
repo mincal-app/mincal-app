@@ -197,7 +197,7 @@ public class SetRole extends Fragment {
         refreshRoles(); // Deselect all roles.
 
         if (!selectedRole.isEmpty()) {
-            selectRole.setBackgroundResource(R.drawable.rounded_button);
+            selectRole.setBackgroundResource(R.drawable.rounded_button_purple);
             selectRole.setPadding(0, 0, 10, 10);
         }
 

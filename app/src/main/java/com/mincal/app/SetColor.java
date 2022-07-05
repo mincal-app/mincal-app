@@ -1,6 +1,5 @@
 package com.mincal.app;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,8 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 public class SetColor extends Fragment {
 
@@ -172,7 +169,6 @@ public class SetColor extends Fragment {
                 }
             }
         });
-
     }
 
     public void refreshRoles() {
@@ -188,23 +184,30 @@ public class SetColor extends Fragment {
 
         refreshRoles(); // Deselect all roles.
 
-        if (!selectedColor.isEmpty()) {
-            selectColor.setBackgroundResource(R.drawable.rounded_button);
-            selectColor.setPadding(0, 0, 10, 10);
-        }
-
         if (selectedColor == "orange") {
             orangeColor.setBackgroundResource(R.drawable.orange_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_orange);
+            selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "red") {
             redColor.setBackgroundResource(R.drawable.red_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_red);
+            selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "purple") {
             purpleColor.setBackgroundResource(R.drawable.purple_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_purple);
+            selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "green") {
             greenColor.setBackgroundResource(R.drawable.green_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_green);
+            selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "blue") {
             blueColor.setBackgroundResource(R.drawable.blue_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_blue);
+            selectColor.setPadding(0, 0, 10, 10);
         } else if (selectedColor == "yellow") {
             yellowColor.setBackgroundResource(R.drawable.yellow_orb_selected);
+            selectColor.setBackgroundResource(R.drawable.rounded_button_yellow);
+            selectColor.setPadding(0, 0, 10, 10);
         }
     }
 
