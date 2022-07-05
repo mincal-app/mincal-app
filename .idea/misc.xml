@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_button_disabled.xml" value="0.196" />
         <entry key="app/src/main/res/layout/fragment_set_field.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/fragment_set_name.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_powertools.xml" value="0.2759259259259259" />
         <entry key="app/src/main/res/layout/fragment_set_role.xml" value="0.41016387939453125" />
         <entry key="app/src/main/res/layout/fragment_setting_mincal.xml" value="0.25" />

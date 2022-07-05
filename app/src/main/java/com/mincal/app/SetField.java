@@ -74,15 +74,6 @@ public class SetField extends Fragment {
 
         tinydb = new TinyDB(getContext());
 
-        // TODO: Implement data-retrieving with the following comment:
-
-        /** Getting data from TinyDB
-
-        int dataint = tinyDB.getInt("clickCount");
-        String datastring = tinyDB.getString("userName");
-
-         **/
-
         // Views
 
         arrowBackRole = getView().findViewById(R.id.arrow_back_set_role);
@@ -162,12 +153,10 @@ public class SetField extends Fragment {
     public void updateField(TextView fieldView, String fieldName) {
         if (userFields.contains(fieldName)) {
             userFields.remove(fieldName);
-            fieldView.setTextColor(getResources().getColor(R.color.black));
             fieldView.setBackgroundResource(R.drawable.rounded_border_field);
             fieldView.setPadding(0, 0, 0, 0);
         } else {
             userFields.add(fieldName);
-            fieldView.setTextColor(getResources().getColor(R.color.purple));
             fieldView.setBackgroundResource(R.drawable.rounded_border_field_selected_purple);
             fieldView.setPadding(0, 0, 10, 10);
         }

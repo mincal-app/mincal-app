@@ -27,10 +27,6 @@ public class SetPowertools extends Fragment {
     ConstraintLayout statisticsSet;
     ConstraintLayout algebraSet;
 
-    ImageView geometrySetIcon;
-    ImageView statisticsSetIcon;
-    ImageView algebraSetIcon;
-
     TextView geometrySetText;
     TextView statisticsSetText;
     TextView algebraSetText;
