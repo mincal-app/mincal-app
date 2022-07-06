@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Calculator">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculator_screen_container"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_pad_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/calculator_pad_container"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_screen_container" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
