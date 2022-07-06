@@ -1,14 +1,20 @@
 package com.mincal.app;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +38,9 @@ public class SetPowertools extends Fragment {
     TextView algebraSetText;
     TextView selectPowertools;
 
+    TextView powertoolsTitle;
+    TextView powertoolsDescription;
+
     // Resources
 
     int viewFrame;
@@ -42,6 +51,12 @@ public class SetPowertools extends Fragment {
 
     TinyDB tinydb;
     String userColor;
+
+    // Text span
+
+    SpannableString titleSpan;
+    SpannableString descriptionSpan;
+    ForegroundColorSpan stringColor;
 
     // Variables
 
@@ -99,37 +114,59 @@ public class SetPowertools extends Fragment {
 
         selectPowertools = getView().findViewById(R.id.powertool_select);
 
+        powertoolsTitle = getView().findViewById(R.id.powertools_title);
+        powertoolsDescription = getView().findViewById(R.id.powertools_subtitle);
+
+        // Setting the text span
+
+        String titleSpanText = "Choose your\nPowerTools";
+        String descriptionSpanText = "These will boost your calculator\nby offering you the tools you\nneed for your fields.";
+        titleSpan = new SpannableString(titleSpanText);
+        descriptionSpan = new SpannableString(descriptionSpanText);
+
         // Based on the user selected color, set the color variation for each icon.
 
         if (userColor == "purple") {
             uiColor = getResources().getColor(R.color.purple);
             viewFrame = R.drawable.rounded_border_field_selected_purple;
             buttonFrame = R.drawable.rounded_button_purple;
+            stringColor = new ForegroundColorSpan(0xFF8702F5);
         } else if (userColor == "orange") {
             uiColor = getResources().getColor(R.color.orange);
             viewFrame = R.drawable.rounded_border_field_selected_orange;
             buttonFrame = R.drawable.rounded_button_orange;
+            stringColor = new ForegroundColorSpan(0xFFF18F01);
         } else if (userColor == "red") {
             uiColor = getResources().getColor(R.color.red);
             viewFrame = R.drawable.rounded_border_field_selected_red;
             buttonFrame = R.drawable.rounded_button_red;
+            stringColor = new ForegroundColorSpan(0xFFEC0B43);
         } else if (userColor == "green") {
             uiColor = getResources().getColor(R.color.green);
             viewFrame = R.drawable.rounded_border_field_selected_green;
             buttonFrame = R.drawable.rounded_button_green;
+            stringColor = new ForegroundColorSpan(0xFF04E762);
         } else if (userColor == "blue") {
             uiColor = getResources().getColor(R.color.blue);
             viewFrame = R.drawable.rounded_border_field_selected_blue;
             buttonFrame = R.drawable.rounded_button_blue;
+            stringColor = new ForegroundColorSpan(0xFF5DD9C1);
         } else if (userColor == "yellow") {
             uiColor = getResources().getColor(R.color.yellow);
             viewFrame = R.drawable.rounded_border_field_selected_yellow;
             buttonFrame = R.drawable.rounded_button_yellow;
+            stringColor = new ForegroundColorSpan(0xFFF5DD02);
         } else {
             uiColor = getResources().getColor(R.color.purple);
             viewFrame = R.drawable.rounded_border_field_selected_purple;
             buttonFrame = R.drawable.rounded_button_purple;
+            stringColor = new ForegroundColorSpan(0xFF000000);
         }
+
+        // Update text span for title and description based on the user's preferred color.
+
+        updateTextSpan(titleSpan, stringColor, powertoolsTitle, 11, 22);
+        updateTextSpan(descriptionSpan, stringColor, powertoolsDescription, 11, 17);
 
         // Listeners
 
@@ -209,6 +246,23 @@ public class SetPowertools extends Fragment {
             selectPowertools.setBackgroundResource(R.drawable.rounded_button_disabled);
             selectPowertools.setPadding(0, 0, 0, 0);
         }
+    }
+
+    private void updateTextSpan(SpannableString span, ForegroundColorSpan color, TextView view, int spanStart, int spanEnd) {
+
+        // Typeface in order to change text font.
+
+        Typeface face = ResourcesCompat.getFont(getContext(), R.font.montserrat_bold);
+        StyleSpan montSemiBold = new StyleSpan(face.getStyle());
+
+        // SpannableString
+
+        span.setSpan(color, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Apply color to span
+        span.setSpan(montSemiBold, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE); // Apply font to span
+
+        // Change TextView to Colored One
+
+        view.setText(span);
     }
 
     private void setPowertools(ArrayList<String> powertools) {

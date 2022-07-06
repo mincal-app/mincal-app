@@ -106,8 +106,6 @@ public class SetColor extends Fragment {
         stringSpan = new SpannableString(colorSpan);
         stringColor = new ForegroundColorSpan(0xFF000000);
 
-        updateTextSpan(stringSpan, stringColor, colorTitle);
-
         // Listeners
 
         arrowBackField.setOnClickListener(new View.OnClickListener() {
@@ -254,7 +252,7 @@ public class SetColor extends Fragment {
 
         // Change TextView to Colored One
 
-        view.setText(stringSpan);
+        view.setText(span);
     }
 
     private void setColor(String color) {
