@@ -1,12 +1,15 @@
 package com.mincal.app;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +85,33 @@ public class SettingMinCal extends Fragment {
         } else {
             magicWand.setImageResource(R.drawable.ic_wand);
         }
+
+        // Wait during 3 seconds and redirect to the user's calculator.
+
+        Thread background = new Thread() {
+            public void run() {
+                try {
+                    // Thread will sleep for 5 seconds
+                    sleep(3*1000);
+
+                    // After 5 seconds redirect to another intent
+
+                    Bundle i = ActivityOptionsCompat.makeCustomAnimation(getContext(),
+                            android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
+
+                    startActivity(new Intent(getContext(), Calculator.class), i);
+
+                    //Remove activity
+
+                    getActivity().finish();
+                } catch (Exception e) {
+                    Log.e(e.toString(), e.getMessage());
+                }
+            }
+        };
+        // start thread
+        background.start();
+
     }
 
     @Override
