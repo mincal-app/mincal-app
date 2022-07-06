@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="550dp"
+    tools:context=".CalculatorPad">
+
+    <!-- Top Buttons -->
+
+    <TextView
+        android:id="@+id/pad_top_clean"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_right_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="C"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_top_parentheses"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pad_top_parentheses" />
+
+    <TextView
+        android:id="@+id/pad_top_parentheses"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="( )"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_top_divide"
+        app:layout_constraintEnd_toStartOf="@+id/pad_top_divide"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_clean"
+        app:layout_constraintTop_toTopOf="@+id/pad_top_divide" />
+
+    <TextView
+        android:id="@+id/pad_top_divide"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="÷"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_top_multiply"
+        app:layout_constraintEnd_toStartOf="@+id/pad_top_multiply"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_parentheses"
+        app:layout_constraintTop_toTopOf="@+id/pad_top_multiply" />
+
+    <TextView
+        android:id="@+id/pad_top_multiply"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/pad_right_more_tools"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_divide"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Right Pane -->
+
+    <TextView
+        android:id="@+id/pad_right_more_tools"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/calculator_pad_rounded_left_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="&lt;"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/pad_right_minus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/pad_top_multiply"
+        app:layout_constraintTop_toBottomOf="@+id/pad_top_multiply" />
+
+    <TextView
+        android:id="@+id/pad_right_minus"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="-"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/pad_right_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_divide"
+        app:layout_constraintTop_toBottomOf="@+id/pad_right_more_tools" />
+
+    <TextView
+        android:id="@+id/pad_right_plus"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/pad_right_equal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_divide"
+        app:layout_constraintTop_toBottomOf="@+id/pad_right_minus" />
+
+    <TextView
+        android:id="@+id/pad_right_equal"
+        android:layout_width="60dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="="
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_top_divide"
+        app:layout_constraintTop_toBottomOf="@+id/pad_right_plus" />
+
+    <!-- Number Pad -->
+
+    <!-- Top Row -->
+
+    <TextView
+        android:id="@+id/pad_numbers_one"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_two"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_two" />
+
+    <TextView
+        android:id="@+id/pad_numbers_two"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="2"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_three"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_one"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_three" />
+
+    <TextView
+        android:id="@+id/pad_numbers_three"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_right_more_tools"
+        app:layout_constraintEnd_toStartOf="@+id/pad_right_more_tools"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_two"
+        app:layout_constraintTop_toTopOf="@+id/pad_right_more_tools" />
+
+    <!-- Middle Row -->
+
+    <TextView
+        android:id="@+id/pad_numbers_four"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="4"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_five"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_five" />
+
+    <TextView
+        android:id="@+id/pad_numbers_five"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="5"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_six"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_one"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_six" />
+
+    <TextView
+        android:id="@+id/pad_numbers_six"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="6"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_right_minus"
+        app:layout_constraintEnd_toStartOf="@+id/pad_right_more_tools"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_two"
+        app:layout_constraintTop_toTopOf="@+id/pad_right_minus" />
+
+    <!-- Bottom Row -->
+
+    <TextView
+        android:id="@+id/pad_numbers_seven"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="7"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_eight"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_eight" />
+
+    <TextView
+        android:id="@+id/pad_numbers_eight"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_numbers_nine"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_one"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_nine" />
+
+    <TextView
+        android:id="@+id/pad_numbers_nine"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="9"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pad_right_plus"
+        app:layout_constraintEnd_toStartOf="@+id/pad_right_more_tools"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_two"
+        app:layout_constraintTop_toTopOf="@+id/pad_right_plus" />
+
+    <!-- Zero Row -->
+
+    <TextView
+        android:id="@+id/pad_numbers_power"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="^"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_two"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_zero" />
+
+    <TextView
+        android:id="@+id/pad_numbers_zero"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/pad_numbers_three"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_one"
+        app:layout_constraintTop_toTopOf="@+id/pad_numbers_back" />
+
+    <TextView
+        android:id="@+id/pad_numbers_back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="6"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/pad_right_more_tools"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/pad_numbers_two"
+        app:layout_constraintTop_toTopOf="@+id/pad_right_equal" />
+
+    <!-- Bottom Tools -->
+
+    <TextView
+        android:id="@+id/pad_bottom_root"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pad_numbers_power"
+        app:layout_constraintStart_toStartOf="@+id/pad_numbers_power"
+        app:layout_constraintTop_toBottomOf="@+id/pad_numbers_power" />
+
+    <TextView
+        android:id="@+id/pad_bottom_euler"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="e"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pad_numbers_zero"
+        app:layout_constraintStart_toStartOf="@+id/pad_numbers_zero"
+        app:layout_constraintTop_toBottomOf="@+id/pad_numbers_zero" />
+
+    <TextView
+        android:id="@+id/pad_bottom_factorial"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/calculator_pad_rounded_purple"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="x"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pad_numbers_back"
+        app:layout_constraintStart_toStartOf="@+id/pad_numbers_back"
+        app:layout_constraintTop_toBottomOf="@+id/pad_numbers_back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
