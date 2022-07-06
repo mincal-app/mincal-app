@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_left_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_right_purple.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/green_orb.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_border_field.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_border_field_selected.xml" value="0.196" />
@@ -34,7 +35,7 @@
         <entry key="app/src/main/res/drawable/rounded_button_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_button_red.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_button_yellow.xml" value="0.189" />
-        <entry key="app/src/main/res/layout/activity_calculator.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/activity_calculator.xml" value="0.210727969348659" />
         <entry key="app/src/main/res/layout/activity_get_started.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_calculator_pad.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/fragment_calculator_screen.xml" value="0.234375" />
