@@ -18,7 +18,12 @@
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_left_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_purple.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_right_purple.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_blue.xml" value="0.1725" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_green.xml" value="0.1725" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_orange.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/calculator_screen_gradient_purple.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_red.xml" value="0.1725" />
+        <entry key="app/src/main/res/drawable/calculator_screen_gradient_yellow.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/green_orb.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/rounded_border_field.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_border_field_selected.xml" value="0.196" />

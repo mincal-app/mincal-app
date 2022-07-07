@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,6 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class CalculatorScreen extends Fragment {
+
+    // Views
+
+    ConstraintLayout calculatorScreen;
+
+    // TinyDB
+
+    TinyDB tinydb;
+    String userColor;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,6 +54,33 @@ public class CalculatorScreen extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Views
+
+        calculatorScreen = getView().findViewById(R.id.calculator_screen);
+
+        // Instance of SharedPreferences to store the user's name.
+
+        tinydb = new TinyDB(getContext());
+        userColor = tinydb.getString("user_color");
+
+        // Modify gradient color based on user's selected color.
+
+        if (userColor == "purple") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_purple);
+        } else if (userColor == "orange") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_orange);
+        } else if (userColor == "red") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_red);
+        } else if (userColor == "green") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_green);
+        } else if (userColor == "blue") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_blue);
+        } else if (userColor == "yellow") {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_yellow);
+        } else {
+            calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_purple);
+        }
     }
 
     @Override
