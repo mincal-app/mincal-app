@@ -19,6 +19,10 @@ import java.util.ArrayList;
 
 public class CalculatorPad extends Fragment {
 
+    // Calculator Global Variables
+
+    private static String calculatorCount = "";
+
     // Views
 
     // Number Pad
@@ -128,6 +132,10 @@ public class CalculatorPad extends Fragment {
         TextView[] numberPad = {one, two, three, four, five, six, seven, eight, nine, zero, power};
         TextView[] roundedButtonsPad = {parentheses, divide, multiply, subtract, add, factorial, euler, root, result};
 
+        // Calculator Screen
+
+        TextView screenResult = (TextView) getActivity().findViewById(R.id.screen_result);
+
         // Instance of SharedPreferences to store the user's name.
 
         tinydb = new TinyDB(getContext());
@@ -201,6 +209,117 @@ public class CalculatorPad extends Fragment {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_purple);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
             back.setImageResource(R.drawable.ic_back_purple);
+        }
+
+        // Functional Elements
+
+        // Update screen numbers.
+
+        screenResult.setText(calculatorCount);
+
+        one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("1");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("2");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        three.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("3");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        four.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("4");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        five.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("5");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        six.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("6");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        seven.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("7");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        eight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("8");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        nine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateCount("9");
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        zero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorCount += "0";
+                screenResult.setText(calculatorCount);
+            }
+        });
+
+        // Back button
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorCount = calculatorCount.substring(0, calculatorCount.length() - 1);
+                screenResult.setText(calculatorCount);
+
+                // If calculator is empty after deleting, update to zero.
+
+                if (calculatorCount.isEmpty()) {
+                    calculatorCount = "0";
+                    screenResult.setText(calculatorCount);
+                }
+            }
+        });
+    }
+
+    public void updateCount(String number) {
+        if (calculatorCount == "0") {
+            calculatorCount = number;
+        } else {
+            calculatorCount += number;
         }
     }
 

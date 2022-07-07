@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class CalculatorScreen extends Fragment {
 
     // Views
 
     ConstraintLayout calculatorScreen;
+    TextView screenResult;
 
     // TinyDB
 
@@ -58,6 +60,7 @@ public class CalculatorScreen extends Fragment {
         // Views
 
         calculatorScreen = getView().findViewById(R.id.calculator_screen);
+        screenResult = getView().findViewById(R.id.screen_result);
 
         // Instance of SharedPreferences to store the user's name.
 
