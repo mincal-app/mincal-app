@@ -16,30 +16,62 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // Fixed portrait orientation
 
-        // Redirect to Home Activity
+        // TinyDB for accessing user preferences.
 
-        Thread background = new Thread() {
-            public void run() {
-                try {
-                    // Thread will sleep for 5 seconds
-                    sleep(3*1000);
+        TinyDB tinydb = new TinyDB(getBaseContext());
 
-                    // After 5 seconds redirect to another intent
+        // Check if user has completed the Get Started activity.
 
-                    Bundle i = ActivityOptionsCompat.makeCustomAnimation(getBaseContext(),
-                            android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
+        if (tinydb.getBoolean("get_started_completed")) {
+            Thread background = new Thread() {
+                public void run() {
+                    try {
+                        // Thread will sleep for 5 seconds
+                        sleep(3*1000);
 
-                    startActivity(new Intent(getBaseContext(), WelcomeActivity.class), i);
+                        // After 5 seconds redirect to another intent
 
-                    //Remove activity
+                        Bundle i = ActivityOptionsCompat.makeCustomAnimation(getBaseContext(),
+                                android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
 
-                    finish();
-                } catch (Exception e) {
-                    Log.e(e.toString(), e.getMessage());
+                        startActivity(new Intent(getBaseContext(), Calculator.class), i);
+
+                        // Remove activity
+
+                        finish();
+                    } catch (Exception e) {
+                        Log.e(e.toString(), e.getMessage());
+                    }
                 }
-            }
-        };
-        // start thread
-        background.start();
+            };
+
+            // Start thread
+            background.start();
+        } else {
+            Thread background = new Thread() {
+                public void run() {
+                    try {
+                        // Thread will sleep for 5 seconds
+                        sleep(3*1000);
+
+                        // After 5 seconds redirect to another intent
+
+                        Bundle i = ActivityOptionsCompat.makeCustomAnimation(getBaseContext(),
+                                android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
+
+                        startActivity(new Intent(getBaseContext(), WelcomeActivity.class), i);
+
+                        // Remove activity
+
+                        finish();
+                    } catch (Exception e) {
+                        Log.e(e.toString(), e.getMessage());
+                    }
+                }
+            };
+
+            // Start thread
+            background.start();
+        }
     }
 }

@@ -86,6 +86,10 @@ public class SettingMinCal extends Fragment {
             magicWand.setImageResource(R.drawable.ic_wand);
         }
 
+        // Add the state of "completed" for future use.
+
+        tinydb.putBoolean("get_started_completed", true);
+
         // Wait during 3 seconds and redirect to the user's calculator.
 
         Thread background = new Thread() {
