@@ -361,13 +361,13 @@
         app:layout_constraintTop_toBottomOf="@+id/pad_numbers_zero" />
 
     <TextView
-        android:id="@+id/pad_bottom_factorial"
+        android:id="@+id/pad_bottom_dot"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@drawable/calculator_pad_rounded_purple"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
-        android:text="!"
+        android:text=","
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

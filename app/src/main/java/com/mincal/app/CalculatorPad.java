@@ -21,7 +21,10 @@ public class CalculatorPad extends Fragment {
 
     // Calculator Global Variables
 
-    private static String calculatorCount = "";
+    private static String calculatorCount = "0";
+    private static int calculatorDotCount = 0;
+    private static ArrayList<Double> calculatorStack = new ArrayList<>();
+    private static ArrayList<String> symbolStack = new ArrayList<>();
 
     // Views
 
@@ -46,7 +49,7 @@ public class CalculatorPad extends Fragment {
     TextView multiply;
     TextView subtract;
     TextView add;
-    TextView factorial;
+    TextView dot;
     TextView euler;
     TextView root;
 
@@ -56,6 +59,12 @@ public class CalculatorPad extends Fragment {
     TextView clean;
     TextView powertools;
     TextView result;
+
+    // Calculator Screen
+
+    TextView screenResult;
+    TextView screenResultFirstStack;
+    TextView screenResultSecondStack;
 
     // TinyDB
 
@@ -116,7 +125,7 @@ public class CalculatorPad extends Fragment {
         multiply = getView().findViewById(R.id.pad_top_multiply);
         subtract = getView().findViewById(R.id.pad_right_minus);
         add = getView().findViewById(R.id.pad_right_plus);
-        factorial = getView().findViewById(R.id.pad_bottom_factorial);
+        dot = getView().findViewById(R.id.pad_bottom_dot);
         euler = getView().findViewById(R.id.pad_bottom_euler);
         root = getView().findViewById(R.id.pad_bottom_root);
 
@@ -130,11 +139,13 @@ public class CalculatorPad extends Fragment {
         // Elements as Array
 
         TextView[] numberPad = {one, two, three, four, five, six, seven, eight, nine, zero, power};
-        TextView[] roundedButtonsPad = {parentheses, divide, multiply, subtract, add, factorial, euler, root, result};
+        TextView[] roundedButtonsPad = {parentheses, divide, multiply, subtract, add, dot, euler, root, result};
 
         // Calculator Screen
 
-        TextView screenResult = (TextView) getActivity().findViewById(R.id.screen_result);
+        screenResult = (TextView) getActivity().findViewById(R.id.screen_result);
+        screenResultFirstStack = (TextView) getActivity().findViewById(R.id.screen_result_first_stack);
+        screenResultSecondStack = (TextView) getActivity().findViewById(R.id.screen_result_second_stack);
 
         // Instance of SharedPreferences to store the user's name.
 
@@ -221,7 +232,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("1");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -229,7 +240,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("2");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -237,7 +248,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("3");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -245,7 +256,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("4");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -253,7 +264,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("5");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -261,7 +272,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("6");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -269,7 +280,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("7");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -277,7 +288,7 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("8");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
@@ -285,15 +296,26 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 updateCount("9");
-                screenResult.setText(calculatorCount);
+                updateScreen();
             }
         });
 
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculatorCount += "0";
-                screenResult.setText(calculatorCount);
+                updateCount("0");
+                updateScreen();
+            }
+        });
+
+        dot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!calculatorCount.contains(".")) {
+                    calculatorDotCount++;
+                    calculatorCount += ".";
+                    screenResult.setText(calculatorCount);
+                }
             }
         });
 
@@ -313,13 +335,119 @@ public class CalculatorPad extends Fragment {
                 }
             }
         });
+
+        // Symbol usage.
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("+");
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Add symbol to calculator screen.
+
+                calculatorCount = "0";
+                updateScreen();
+            }
+        });
+
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("-");
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Add symbol to calculator screen.
+
+                calculatorCount = "0";
+                updateScreen();
+            }
+        });
+
+        multiply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("x");
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Add symbol to calculator screen.
+
+                calculatorCount = "0";
+                updateScreen();
+            }
+        });
+
+        divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("÷");
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Add symbol to calculator screen.
+
+                calculatorCount = "0";
+                updateScreen();
+            }
+        });
+
+        // Core buttons
+
+        clean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculatorCount = "0";
+                calculatorStack.clear();
+                symbolStack.clear();
+                screenResult.setText("0");
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+            }
+        });
+    }
+
+    // Update Count based on number.
+
+    public void updateScreen() {
+        if (calculatorCount == "0") {
+            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + calculatorCount);
+        } else {
+            screenResult.setText(calculatorCount);
+        }
     }
 
     public void updateCount(String number) {
-        if (calculatorCount == "0") {
+        if (calculatorCount.equals("0") && number.equals("0")) {
+            calculatorCount += ".0";
+        } else if (calculatorCount.equals("0")) {
             calculatorCount = number;
         } else {
             calculatorCount += number;
+        }
+    }
+
+    public void updateStack(TextView firstStack, TextView secondStack) {
+
+        // Set symbols.
+
+        String firstStackSymbol = "";
+        String secondStackSymbol = "";
+
+        if (calculatorStack.size() >= 3) {
+            firstStackSymbol = symbolStack.get(symbolStack.size() - 2);
+            secondStackSymbol = symbolStack.get(symbolStack.size() - 3);
+            firstStack.setText(String.valueOf(firstStackSymbol + " " + calculatorStack.get(calculatorStack.size() - 1)));
+            secondStack.setText(String.valueOf(secondStackSymbol + " " + calculatorStack.get(calculatorStack.size() - 2)));
+        } else if (calculatorStack.size() >= 2) {
+            firstStackSymbol = symbolStack.get(symbolStack.size() - 2);
+            firstStack.setText(String.valueOf(firstStackSymbol + " " + calculatorStack.get(calculatorStack.size() - 1)));
+        } else if (calculatorStack.size() >= 1) {
+            firstStack.setText(String.valueOf(calculatorStack.get(calculatorStack.size() - 1)));
+        } else {
+            firstStack.setText("");
+            secondStack.setText("");
         }
     }
 

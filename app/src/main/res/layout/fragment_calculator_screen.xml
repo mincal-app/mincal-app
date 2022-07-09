@@ -29,15 +29,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/screen_result_second_stack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text=""
+        android:textColor="@color/black_60"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/screen_result_first_stack"
+        app:layout_constraintEnd_toEndOf="@+id/screen_tools" />
+
+    <TextView
+        android:id="@+id/screen_result_first_stack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text=""
+        android:textColor="@color/black_80"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/screen_result"
+        app:layout_constraintEnd_toEndOf="@+id/screen_tools" />
+
+    <TextView
         android:id="@+id/screen_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="0"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/screen_tools"
-        app:layout_constraintTop_toBottomOf="@+id/screen_tools" />
+        app:layout_constraintEnd_toEndOf="@+id/screen_tools" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
