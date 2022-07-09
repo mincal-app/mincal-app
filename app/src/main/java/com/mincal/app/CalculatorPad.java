@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class CalculatorPad extends Fragment {
 
     private static String calculatorCount = "0";
     private static int calculatorDotCount = 0;
+    private static long resultCount = 0;
     private static ArrayList<Double> calculatorStack = new ArrayList<>();
     private static ArrayList<String> symbolStack = new ArrayList<>();
 
@@ -406,6 +408,31 @@ public class CalculatorPad extends Fragment {
                 updateStack(screenResultFirstStack, screenResultSecondStack);
             }
         });
+
+        // Equals/Results Button
+
+        result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Add current value
+
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+
+                // If stack.size() is odd, add 0.
+
+                if (calculatorStack.size() % 2 != 0) {
+                    calculatorStack.add(0.0);
+                    symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+                }
+
+                // Process Stacks
+
+                screenResult.setText(String.valueOf(processResult()));
+                updateStack(screenResultFirstStack, screenResultSecondStack);
+            }
+        });
     }
 
     // Update Count based on number.
@@ -449,6 +476,50 @@ public class CalculatorPad extends Fragment {
             firstStack.setText("");
             secondStack.setText("");
         }
+    }
+
+    // Process the final result from the numbers and symbols stack.
+
+    public int processResult() {
+
+        int resultCount = 0;
+
+        // Get the symbols and numbers from inside both stacks.
+
+        for (int i = 0; i < calculatorStack.size() - 1; i += 2) {
+            if (i == calculatorStack.size() - 1) {
+                if (symbolStack.get(i) == "+") {
+                    resultCount += calculatorStack.get(i);
+                } else if (symbolStack.get(i) == "-") {
+                    resultCount -= calculatorStack.get(i);
+                } else if (symbolStack.get(i) == "x") {
+                    resultCount *= calculatorStack.get(i);
+                } else if (symbolStack.get(i) == "÷") {
+                    resultCount /= calculatorStack.get(i);
+                }
+            } else {
+                if (symbolStack.get(i) == "+") {
+                    resultCount += (calculatorStack.get(i) + calculatorStack.get(i + 1));
+                } else if (symbolStack.get(i) == "-") {
+                    resultCount += (calculatorStack.get(i) - calculatorStack.get(i + 1));
+                } else if (symbolStack.get(i) == "x") {
+                    resultCount += (calculatorStack.get(i) * calculatorStack.get(i + 1));
+                } else if (symbolStack.get(i) == "÷") {
+                    resultCount += (calculatorStack.get(i) / calculatorStack.get(i + 1));
+                }
+            }
+        }
+
+        // Clean calculator
+
+        calculatorCount = "0";
+        calculatorStack.clear();
+        symbolStack.clear();
+
+        // Result results
+
+        Log.d("CalculatorTag", "Results: " + resultCount);
+        return resultCount;
     }
 
     @Override
