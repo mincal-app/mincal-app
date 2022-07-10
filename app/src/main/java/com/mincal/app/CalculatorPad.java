@@ -343,13 +343,19 @@ public class CalculatorPad extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add("+");
-                updateStack(screenResultFirstStack, screenResultSecondStack);
+                if (calculatorCount == "0") {
+                    symbolStack.set(symbolStack.size() - 1, "+");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
+                } else {
+                    calculatorStack.add(Double.parseDouble(calculatorCount));
+                    symbolStack.add("+");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
 
-                // Add symbol to calculator screen.
+                    // Add symbol to calculator screen.
 
-                calculatorCount = "0";
+                    calculatorCount = "0";
+                }
+
                 updateScreen();
             }
         });
@@ -357,13 +363,19 @@ public class CalculatorPad extends Fragment {
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add("-");
-                updateStack(screenResultFirstStack, screenResultSecondStack);
+                if (calculatorCount == "0") {
+                    symbolStack.set(symbolStack.size() - 1, "-");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
+                } else {
+                    calculatorStack.add(Double.parseDouble(calculatorCount));
+                    symbolStack.add("-");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
 
-                // Add symbol to calculator screen.
+                    // Add symbol to calculator screen.
 
-                calculatorCount = "0";
+                    calculatorCount = "0";
+                }
+
                 updateScreen();
             }
         });
@@ -371,13 +383,19 @@ public class CalculatorPad extends Fragment {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add("x");
-                updateStack(screenResultFirstStack, screenResultSecondStack);
+                if (calculatorCount == "0") {
+                    symbolStack.set(symbolStack.size() - 1, "x");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
+                } else {
+                    calculatorStack.add(Double.parseDouble(calculatorCount));
+                    symbolStack.add("x");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
 
-                // Add symbol to calculator screen.
+                    // Add symbol to calculator screen.
 
-                calculatorCount = "0";
+                    calculatorCount = "0";
+                }
+
                 updateScreen();
             }
         });
@@ -385,13 +403,19 @@ public class CalculatorPad extends Fragment {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add("÷");
-                updateStack(screenResultFirstStack, screenResultSecondStack);
+                if (calculatorCount == "0") {
+                    symbolStack.set(symbolStack.size() - 1, "÷");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
+                } else {
+                    calculatorStack.add(Double.parseDouble(calculatorCount));
+                    symbolStack.add("÷");
+                    updateStack(screenResultFirstStack, screenResultSecondStack);
 
-                // Add symbol to calculator screen.
+                    // Add symbol to calculator screen.
 
-                calculatorCount = "0";
+                    calculatorCount = "0";
+                }
+
                 updateScreen();
             }
         });
@@ -516,9 +540,10 @@ public class CalculatorPad extends Fragment {
         calculatorStack.clear();
         symbolStack.clear();
 
-        // Result results
+        // Return results and save as Ans.
 
-        Log.d("CalculatorTag", "Results: " + resultCount);
+        calculatorStack.add(resultCount * 1.0);
+        symbolStack.add("+");
         return resultCount;
     }
 
