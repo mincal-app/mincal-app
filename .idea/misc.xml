@@ -40,6 +40,7 @@
         <entry key="app/src/main/res/drawable/calculator_screen_gradient_red.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/calculator_screen_gradient_yellow.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/green_orb.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/powertools_calculator_menu.xml" value="0.1725" />
         <entry key="app/src/main/res/drawable/rounded_border_field.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_border_field_selected.xml" value="0.196" />
         <entry key="app/src/main/res/drawable/rounded_border_field_selected_blue.xml" value="0.196" />
@@ -57,8 +58,11 @@
         <entry key="app/src/main/res/drawable/rounded_button_yellow.xml" value="0.189" />
         <entry key="app/src/main/res/layout/activity_calculator.xml" value="0.210727969348659" />
         <entry key="app/src/main/res/layout/activity_get_started.xml" value="0.24166666666666667" />
+        <entry key="app/src/main/res/layout/fragment_blur.xml" value="0.22291666666666668" />
         <entry key="app/src/main/res/layout/fragment_calculator_pad.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/fragment_calculator_screen.xml" value="0.234375" />
+        <entry key="app/src/main/res/layout/fragment_fade_in.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_powertools_menu.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_set_color.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_field.xml" value="0.24166666666666667" />
         <entry key="app/src/main/res/layout/fragment_set_name.xml" value="0.24166666666666667" />

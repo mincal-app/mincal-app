@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CalculatorPad extends Fragment {
@@ -105,6 +108,11 @@ public class CalculatorPad extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Initialize Calculator Stack
+
+        calculatorStack.add(Double.parseDouble(calculatorCount));
+        symbolStack.add("+");
 
         // Views
 
@@ -327,13 +335,13 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 calculatorCount = calculatorCount.substring(0, calculatorCount.length() - 1);
-                screenResult.setText(calculatorCount);
+                screenResult.setText(addCommas(Double.parseDouble(calculatorCount)));
 
                 // If calculator is empty after deleting, update to zero.
 
                 if (calculatorCount.isEmpty()) {
                     calculatorCount = "0";
-                    screenResult.setText(calculatorCount);
+                    screenResult.setText(addCommas(Double.parseDouble(calculatorCount)));
                 }
             }
         });
@@ -357,6 +365,10 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Plus", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Plus", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Plus", "Current Symbol Stack: " + symbolStack);
             }
         });
 
@@ -377,6 +389,10 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Minus", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Minus", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Minus", "Current Symbol Stack: " + symbolStack);
             }
         });
 
@@ -397,6 +413,10 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Times", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Times", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Times", "Current Symbol Stack: " + symbolStack);
             }
         });
 
@@ -430,6 +450,11 @@ public class CalculatorPad extends Fragment {
                 symbolStack.clear();
                 screenResult.setText("0");
                 updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Initialize Calculator Stack
+
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("+");
             }
         });
 
@@ -442,19 +467,40 @@ public class CalculatorPad extends Fragment {
                 // Add current value
 
                 calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+                // symbolStack.add(Double.parseDouble(calculatorCount) >= 0 ? "+" : "-");
 
                 // If stack.size() is odd, add 0.
 
                 if (calculatorStack.size() % 2 != 0) {
                     calculatorStack.add(0.0);
-                    symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+                    symbolStack.add(Double.parseDouble(calculatorCount) >= 0 ? "+" : "-");
                 }
 
                 // Process Stacks
 
-                screenResult.setText(String.valueOf(processResult()));
+                Log.d("Testing Result Result", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Result", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Result", "Current Symbol Stack: " + symbolStack);
+
+                screenResult.setText(addCommas(processResult() * 1.0));
                 updateStack(screenResultFirstStack, screenResultSecondStack);
+            }
+        });
+
+        // PowerTools Menu
+
+        powertools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction powerMenuTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction blurTransaction = fragmentManager.beginTransaction();
+                powerMenuTransaction.setCustomAnimations(R.anim.swipe_in_left, R.anim.swipe_out_left);
+                blurTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                PowertoolsMenu powertoolsMenu = new PowertoolsMenu();
+                BlurFragment blurFragment = new BlurFragment();
+                blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
+                powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
             }
         });
     }
@@ -463,9 +509,9 @@ public class CalculatorPad extends Fragment {
 
     public void updateScreen() {
         if (calculatorCount == "0") {
-            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + calculatorCount);
+            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
         } else {
-            screenResult.setText(calculatorCount);
+            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
         }
     }
 
@@ -525,7 +571,7 @@ public class CalculatorPad extends Fragment {
                 if (symbolStack.get(i) == "+") {
                     resultCount += (calculatorStack.get(i) + calculatorStack.get(i + 1));
                 } else if (symbolStack.get(i) == "-") {
-                    resultCount += (calculatorStack.get(i) - calculatorStack.get(i + 1));
+                    resultCount -= (calculatorStack.get(i) - calculatorStack.get(i + 1));
                 } else if (symbolStack.get(i) == "x") {
                     resultCount += (calculatorStack.get(i) * calculatorStack.get(i + 1));
                 } else if (symbolStack.get(i) == "÷") {
@@ -545,6 +591,14 @@ public class CalculatorPad extends Fragment {
         calculatorStack.add(resultCount * 1.0);
         symbolStack.add("+");
         return resultCount;
+    }
+
+    // Add commas to big numbers
+
+    private String addCommas(Double number) {
+        DecimalFormat numberFormatter = new DecimalFormat("###,###.###");
+        String output = numberFormatter.format(number);
+        return output;
     }
 
     @Override
