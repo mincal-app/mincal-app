@@ -1,5 +1,7 @@
 package com.mincal.app;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,30 +19,39 @@ public class PowerIcons {
 
     // Methods
 
-    public HashMap<String, Integer> getPowertools() {
+    public HashMap<String, ArrayList<Integer>> getPowertools() {
 
-        HashMap<String, Integer> powertoolsMap = new HashMap<>();
+        HashMap<String, ArrayList<Integer>> powertoolsMap = new HashMap<>();
 
         // Powertools Dictionary
 
         for (int i = 0; i < powertoolIds.size(); i++) {
 
             String id = powertoolIds.get(i);
-            int drawableId = 0;
+            ArrayList<Integer> drawableIds = new ArrayList<>();
 
             // Get drawable
 
-            if (id == "geometry_set") {
-                drawableId = R.id.algebra_set_text;
-            } else if (id == "statistics_set") {
-                drawableId = R.id.algebra_set_text;
-            } else if (id == "algebra_set") {
-                drawableId = R.id.algebra_set_text;
+            if (id.equals("geometry_set")) {
+                drawableIds.add(R.drawable.ic_sin_geometry);
+                drawableIds.add(R.drawable.ic_cos_geometry);
+                drawableIds.add(R.drawable.ic_tan_geometry);
+                drawableIds.add(R.drawable.ic_sec_geometry);
+                drawableIds.add(R.drawable.ic_csc_geometry);
+                drawableIds.add(R.drawable.ic_cot_geometry);
+                drawableIds.add(R.drawable.ic_arcsin_geometry);
+                drawableIds.add(R.drawable.ic_arccos_geometry);
+                drawableIds.add(R.drawable.ic_arctan_geometry);
+                drawableIds.add(R.drawable.ic_pi_geometry);
+            } else if (id.equals("statistics_set")) {
+                drawableIds.add(R.drawable.ic_chart_white);
+            } else if (id.equals("algebra_set")) {
+                drawableIds.add(R.drawable.ic_chart_white);
             }
 
             // Add to ArrayList
 
-            powertoolsMap.put(powertoolIds.get(i), drawableId);
+            powertoolsMap.put(id, drawableIds);
         }
 
         return powertoolsMap;

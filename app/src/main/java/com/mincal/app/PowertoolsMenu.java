@@ -69,11 +69,21 @@ public class PowertoolsMenu extends Fragment {
         // Getting icons, functions, and ids.
 
         PowerIcons powerIcons = new PowerIcons(userPowertools);
-        HashMap<String, Integer> powertoolsMap = powerIcons.getPowertools();
+        HashMap<String, ArrayList<Integer>> powertoolsMap = powerIcons.getPowertools();
+        Log.d("PowerIcons", "Original Drawables contains: " + powertoolsMap.values());
         Log.d("PowerIcons", "TinyDB contains: " + userPowertools);
         Log.d("PowerIcons", "HashMap contains: " + powertoolsMap);
 
-        int[] powerDrawables = Ints.toArray(powertoolsMap.values());
+        // TODO: Look for a way to implement an ArrayList into the adapter as rows.
+
+        ArrayList<Integer> powerDrawables = new ArrayList<>();
+
+        for (String toolKey : powertoolsMap.keySet()) {
+            for (int i = 0; i < powertoolsMap.get(toolKey).size(); i++) {
+                powerDrawables.add(powertoolsMap.get(toolKey).get(i));
+            }
+        }
+
         Log.d("PowerIcons", "Drawables contains: " + powerDrawables);
 
         // Views
