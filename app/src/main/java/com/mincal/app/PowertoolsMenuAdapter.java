@@ -8,20 +8,21 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PowertoolsMenuAdapter extends BaseAdapter {
     private Context mContext;
-    private int[] powerArray;
+    private ArrayList<Integer> powerArray;
 
     // Constructor
-    public PowertoolsMenuAdapter(Context c, int[] array) {
+    public PowertoolsMenuAdapter(Context c, ArrayList<Integer> array) {
         mContext = c;
         powerArray = array;
     }
 
     public int getCount() {
-        return powerArray.length;
+        return powerArray.size();
     }
 
     public Object getItem(int position) {
@@ -40,23 +41,14 @@ public class PowertoolsMenuAdapter extends BaseAdapter {
 
         if (convertView == null) {
             powertoolIcon = new ImageView(mContext);
-            powertoolIcon.setLayoutParams(new GridView.LayoutParams(70, 70));
+            powertoolIcon.setLayoutParams(new GridView.LayoutParams(110, 70));
             powertoolIcon.setScaleType(ImageView.ScaleType.CENTER);
             powertoolIcon.setPadding(15, 15, 15, 15);
         } else {
             powertoolIcon = (ImageView) convertView;
         }
 
-        powertoolIcon.setImageResource(powerArray[position]);
+        powertoolIcon.setImageResource(powerArray.get(position));
         return powertoolIcon;
     }
-
-    // Keep all Images in array.
-
-    public Integer[] mThumbIds = {
-            R.drawable.ic_add_powertool,
-            R.drawable.ic_chart_white,
-            R.drawable.ic_chart_white,
-            R.drawable.ic_chart_white
-    };
 }
