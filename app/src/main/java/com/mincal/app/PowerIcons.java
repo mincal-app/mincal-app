@@ -1,5 +1,7 @@
 package com.mincal.app;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,22 +28,25 @@ public class PowerIcons {
         for (int i = 0; i < powertoolIds.size(); i++) {
 
             String id = powertoolIds.get(i);
-            int drawableId = 0;
+            Integer drawableId = 0;
 
             // Get drawable
 
-            if (id == "geometry_set") {
-                drawableId = R.id.algebra_set_text;
-            } else if (id == "statistics_set") {
-                drawableId = R.id.algebra_set_text;
-            } else if (id == "algebra_set") {
-                drawableId = R.id.algebra_set_text;
+            if (id.equals("geometry_set")) {
+                drawableId = R.drawable.ic_chart_white;
+            } else if (id.equals("statistics_set")) {
+                drawableId = R.drawable.ic_chart_white;
+            } else if (id.equals("algebra_set")) {
+                drawableId = R.drawable.ic_chart_white;
             }
 
             // Add to ArrayList
 
-            powertoolsMap.put(powertoolIds.get(i), drawableId);
+            Log.d("PIcons", "Current id: " + drawableId);
+            powertoolsMap.put(id, drawableId);
         }
+
+        Log.d("PIcons", "Final id: " + powertoolsMap);
 
         return powertoolsMap;
     }
