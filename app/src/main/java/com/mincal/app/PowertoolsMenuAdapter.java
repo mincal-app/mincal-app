@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PowertoolsMenuAdapter extends BaseAdapter {
-    private Context mContext;
-    private ArrayList<Integer> powerArray;
+    private final Context mContext;
+    private final ArrayList<Integer> powerArray;
 
     // Constructor
     public PowertoolsMenuAdapter(Context c, ArrayList<Integer> array) {

@@ -32,7 +32,7 @@ public class PowerIcons {
 
             // Get drawable
 
-            if (id.equals("geometry_set")) {
+            if ("geometry_set".equals(id)) {
                 drawableIds.add(R.drawable.ic_sin_geometry);
                 drawableIds.add(R.drawable.ic_cos_geometry);
                 drawableIds.add(R.drawable.ic_tan_geometry);
@@ -43,9 +43,9 @@ public class PowerIcons {
                 drawableIds.add(R.drawable.ic_arccos_geometry);
                 drawableIds.add(R.drawable.ic_arctan_geometry);
                 drawableIds.add(R.drawable.ic_pi_geometry);
-            } else if (id.equals("statistics_set")) {
+            } else if ("statistics_set".equals(id)) {
                 drawableIds.add(R.drawable.ic_chart_white);
-            } else if (id.equals("algebra_set")) {
+            } else if ("algebra_set".equals(id)) {
                 drawableIds.add(R.drawable.ic_chart_white);
             }
 
