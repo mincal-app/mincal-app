@@ -148,36 +148,49 @@
 
     <TextView
         android:id="@+id/hide_powertools"
-        android:layout_width="90dp"
+        android:layout_width="370dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="20dp"
         android:background="@drawable/calculator_pad_rounded_left_purple"
         android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="35dp"
         android:text=">"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/pad_right_more_tools"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/pad_right_more_tools"
         app:layout_constraintVertical_bias="0.3" />
 
     <GridView
         android:id="@+id/powertools_grid"
         android:layout_width="310dp"
-        android:layout_height="440dp"
-        android:paddingTop="25dp"
-        android:paddingHorizontal="20dp"
-        android:columnWidth="20dp"
-        android:numColumns="3"
-        android:verticalSpacing="16dp"
-        android:horizontalSpacing="10dp"
-        android:stretchMode="columnWidth"
-        android:gravity="center"
+        android:layout_height="380dp"
         android:background="@drawable/powertools_calculator_menu"
+        android:columnWidth="20dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="25dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hide_powertools"
+        app:layout_constraintTop_toBottomOf="@+id/hide_powertools" />
+
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_category_white"
+        android:fontFamily="@font/montserrat_semibold"
+        android:gravity="center"
+        android:text="Geometry"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/hide_powertools"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/powertools_grid"
         app:layout_constraintTop_toTopOf="@+id/hide_powertools" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
