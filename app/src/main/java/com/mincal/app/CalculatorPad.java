@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CalculatorPad extends Fragment {
@@ -106,6 +109,11 @@ public class CalculatorPad extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initialize Calculator Stack
+
+        calculatorStack.add(Double.parseDouble(calculatorCount));
+        symbolStack.add("+");
+
         // Views
 
         one = getView().findViewById(R.id.pad_numbers_one);
@@ -157,17 +165,17 @@ public class CalculatorPad extends Fragment {
         // Modify gradient color based on user's selected color.
 
         for (int i = 0; i < numberPad.length; i++) {
-            if (userColor == "orange") {
+            if ("orange".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.orange));
-            } else if (userColor == "red") {
+            } else if ("red".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.red));
-            } else if (userColor == "blue") {
+            } else if ("blue".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.blue));
-            } else if (userColor == "purple") {
+            } else if ("purple".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.purple));
-            } else if (userColor == "green") {
+            } else if ("green".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.green));
-            } else if (userColor == "yellow") {
+            } else if ("yellow".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.yellow));
             } else {
                 numberPad[i].setTextColor(getResources().getColor(R.color.black));
@@ -175,17 +183,17 @@ public class CalculatorPad extends Fragment {
         }
 
         for (int i = 0; i < roundedButtonsPad.length; i++) {
-            if (userColor == "orange") {
+            if ("orange".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_orange);
-            } else if (userColor == "red") {
+            } else if ("red".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_red);
-            } else if (userColor == "blue") {
+            } else if ("blue".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_blue);
-            } else if (userColor == "purple") {
+            } else if ("purple".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_purple);
-            } else if (userColor == "green") {
+            } else if ("green".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_green);
-            } else if (userColor == "yellow") {
+            } else if ("yellow".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_yellow);
             } else {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_purple);
@@ -194,27 +202,27 @@ public class CalculatorPad extends Fragment {
 
         // Change color for special buttons
 
-        if (userColor == "orange") {
+        if ("orange".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_orange);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_orange);
             back.setImageResource(R.drawable.ic_back_orange);
-        } else if (userColor == "red") {
+        } else if ("red".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_red);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_red);
             back.setImageResource(R.drawable.ic_back_red);
-        } else if (userColor == "blue") {
+        } else if ("blue".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_blue);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_blue);
             back.setImageResource(R.drawable.ic_back_blue);
-        } else if (userColor == "purple") {
+        } else if ("purple".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_purple);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
             back.setImageResource(R.drawable.ic_back_purple);
-        } else if (userColor == "green") {
+        } else if ("green".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_green);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_green);
             back.setImageResource(R.drawable.ic_back_green);
-        } else if (userColor == "yellow") {
+        } else if ("yellow".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_yellow);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_yellow);
             back.setImageResource(R.drawable.ic_back_yellow);
@@ -327,13 +335,13 @@ public class CalculatorPad extends Fragment {
             @Override
             public void onClick(View view) {
                 calculatorCount = calculatorCount.substring(0, calculatorCount.length() - 1);
-                screenResult.setText(calculatorCount);
+                screenResult.setText(addCommas(Double.parseDouble(calculatorCount)));
 
                 // If calculator is empty after deleting, update to zero.
 
                 if (calculatorCount.isEmpty()) {
                     calculatorCount = "0";
-                    screenResult.setText(calculatorCount);
+                    screenResult.setText(addCommas(Double.parseDouble(calculatorCount)));
                 }
             }
         });
@@ -343,7 +351,7 @@ public class CalculatorPad extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount == "0") {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "+");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -357,13 +365,17 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Plus", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Plus", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Plus", "Current Symbol Stack: " + symbolStack);
             }
         });
 
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount == "0") {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "-");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -377,13 +389,17 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Minus", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Minus", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Minus", "Current Symbol Stack: " + symbolStack);
             }
         });
 
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount == "0") {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "x");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -397,13 +413,17 @@ public class CalculatorPad extends Fragment {
                 }
 
                 updateScreen();
+
+                Log.d("Testing Result Times", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Times", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Times", "Current Symbol Stack: " + symbolStack);
             }
         });
 
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount == "0") {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "÷");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -430,6 +450,11 @@ public class CalculatorPad extends Fragment {
                 symbolStack.clear();
                 screenResult.setText("0");
                 updateStack(screenResultFirstStack, screenResultSecondStack);
+
+                // Initialize Calculator Stack
+
+                calculatorStack.add(Double.parseDouble(calculatorCount));
+                symbolStack.add("+");
             }
         });
 
@@ -442,19 +467,40 @@ public class CalculatorPad extends Fragment {
                 // Add current value
 
                 calculatorStack.add(Double.parseDouble(calculatorCount));
-                symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+                // symbolStack.add(Double.parseDouble(calculatorCount) >= 0 ? "+" : "-");
 
                 // If stack.size() is odd, add 0.
 
                 if (calculatorStack.size() % 2 != 0) {
                     calculatorStack.add(0.0);
-                    symbolStack.add(Double.parseDouble(calculatorCount) > 0 ? "+" : "-");
+                    symbolStack.add(Double.parseDouble(calculatorCount) >= 0 ? "+" : "-");
                 }
 
                 // Process Stacks
 
-                screenResult.setText(String.valueOf(processResult()));
+                Log.d("Testing Result Result", "Current Count: " + calculatorCount);
+                Log.d("Testing Result Result", "Current Stack: " + calculatorStack);
+                Log.d("Testing Result Result", "Current Symbol Stack: " + symbolStack);
+
+                screenResult.setText(addCommas(processResult() * 1.0));
                 updateStack(screenResultFirstStack, screenResultSecondStack);
+            }
+        });
+
+        // PowerTools Menu
+
+        powertools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction powerMenuTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction blurTransaction = fragmentManager.beginTransaction();
+                powerMenuTransaction.setCustomAnimations(R.anim.swipe_in_left, R.anim.swipe_out_left);
+                blurTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                PowertoolsMenu powertoolsMenu = new PowertoolsMenu();
+                BlurFragment blurFragment = new BlurFragment();
+                blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
+                powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
             }
         });
     }
@@ -462,17 +508,17 @@ public class CalculatorPad extends Fragment {
     // Update Count based on number.
 
     public void updateScreen() {
-        if (calculatorCount == "0") {
-            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + calculatorCount);
+        if ("0".equals(calculatorCount)) {
+            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
         } else {
-            screenResult.setText(calculatorCount);
+            screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
         }
     }
 
     public void updateCount(String number) {
-        if (calculatorCount.equals("0") && number.equals("0")) {
+        if ("0".equals(calculatorCount) && "0".equals(number)) {
             calculatorCount += ".0";
-        } else if (calculatorCount.equals("0")) {
+        } else if ("0".equals(calculatorCount)) {
             calculatorCount = number;
         } else {
             calculatorCount += number;
@@ -512,23 +558,23 @@ public class CalculatorPad extends Fragment {
 
         for (int i = 0; i < calculatorStack.size() - 1; i += 2) {
             if (i == calculatorStack.size() - 1) {
-                if (symbolStack.get(i) == "+") {
+                if (symbolStack.get(i).equals("+")) {
                     resultCount += calculatorStack.get(i);
-                } else if (symbolStack.get(i) == "-") {
+                } else if (symbolStack.get(i).equals("-")) {
                     resultCount -= calculatorStack.get(i);
-                } else if (symbolStack.get(i) == "x") {
+                } else if (symbolStack.get(i).equals("x")) {
                     resultCount *= calculatorStack.get(i);
-                } else if (symbolStack.get(i) == "÷") {
+                } else if (symbolStack.get(i).equals("÷")) {
                     resultCount /= calculatorStack.get(i);
                 }
             } else {
-                if (symbolStack.get(i) == "+") {
+                if ("+".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) + calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i) == "-") {
-                    resultCount += (calculatorStack.get(i) - calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i) == "x") {
+                } else if ("-".equals(symbolStack.get(i))) {
+                    resultCount -= (calculatorStack.get(i) - calculatorStack.get(i + 1));
+                } else if ("x".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) * calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i) == "÷") {
+                } else if ("÷".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) / calculatorStack.get(i + 1));
                 }
             }
@@ -545,6 +591,13 @@ public class CalculatorPad extends Fragment {
         calculatorStack.add(resultCount * 1.0);
         symbolStack.add("+");
         return resultCount;
+    }
+
+    // Add commas to big numbers
+
+    private String addCommas(Double number) {
+        DecimalFormat numberFormatter = new DecimalFormat("###,###.###");
+        return numberFormatter.format(number);
     }
 
     @Override
