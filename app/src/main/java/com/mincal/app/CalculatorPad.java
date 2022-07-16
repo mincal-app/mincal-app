@@ -165,17 +165,17 @@ public class CalculatorPad extends Fragment {
         // Modify gradient color based on user's selected color.
 
         for (int i = 0; i < numberPad.length; i++) {
-            if (userColor.equals("orange")) {
+            if ("orange".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.orange));
-            } else if (userColor.equals("red")) {
+            } else if ("red".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.red));
-            } else if (userColor.equals("blue")) {
+            } else if ("blue".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.blue));
-            } else if (userColor.equals("purple")) {
+            } else if ("purple".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.purple));
-            } else if (userColor.equals("green")) {
+            } else if ("green".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.green));
-            } else if (userColor.equals("yellow")) {
+            } else if ("yellow".equals(userColor)) {
                 numberPad[i].setTextColor(getResources().getColor(R.color.yellow));
             } else {
                 numberPad[i].setTextColor(getResources().getColor(R.color.black));
@@ -183,17 +183,17 @@ public class CalculatorPad extends Fragment {
         }
 
         for (int i = 0; i < roundedButtonsPad.length; i++) {
-            if (userColor.equals("orange")) {
+            if ("orange".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_orange);
-            } else if (userColor.equals("red")) {
+            } else if ("red".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_red);
-            } else if (userColor.equals("blue")) {
+            } else if ("blue".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_blue);
-            } else if (userColor.equals("purple")) {
+            } else if ("purple".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_purple);
-            } else if (userColor.equals("green")) {
+            } else if ("green".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_green);
-            } else if (userColor.equals("yellow")) {
+            } else if ("yellow".equals(userColor)) {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_yellow);
             } else {
                 roundedButtonsPad[i].setBackgroundResource(R.drawable.calculator_pad_rounded_purple);
@@ -202,27 +202,27 @@ public class CalculatorPad extends Fragment {
 
         // Change color for special buttons
 
-        if (userColor.equals("orange")) {
+        if ("orange".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_orange);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_orange);
             back.setImageResource(R.drawable.ic_back_orange);
-        } else if (userColor.equals("red")) {
+        } else if ("red".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_red);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_red);
             back.setImageResource(R.drawable.ic_back_red);
-        } else if (userColor.equals("blue")) {
+        } else if ("blue".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_blue);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_blue);
             back.setImageResource(R.drawable.ic_back_blue);
-        } else if (userColor.equals("purple")) {
+        } else if ("purple".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_purple);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
             back.setImageResource(R.drawable.ic_back_purple);
-        } else if (userColor.equals("green")) {
+        } else if ("green".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_green);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_green);
             back.setImageResource(R.drawable.ic_back_green);
-        } else if (userColor.equals("yellow")) {
+        } else if ("yellow".equals(userColor)) {
             clean.setBackgroundResource(R.drawable.calculator_pad_rounded_right_yellow);
             powertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_yellow);
             back.setImageResource(R.drawable.ic_back_yellow);
@@ -351,7 +351,7 @@ public class CalculatorPad extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount.equals("0")) {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "+");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -375,7 +375,7 @@ public class CalculatorPad extends Fragment {
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount.equals("0")) {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "-");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -399,7 +399,7 @@ public class CalculatorPad extends Fragment {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount.equals("0")) {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "x");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -423,7 +423,7 @@ public class CalculatorPad extends Fragment {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculatorCount.equals("0")) {
+                if ("0".equals(calculatorCount)) {
                     symbolStack.set(symbolStack.size() - 1, "÷");
                     updateStack(screenResultFirstStack, screenResultSecondStack);
                 } else {
@@ -508,7 +508,7 @@ public class CalculatorPad extends Fragment {
     // Update Count based on number.
 
     public void updateScreen() {
-        if (calculatorCount.equals("0")) {
+        if ("0".equals(calculatorCount)) {
             screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
         } else {
             screenResult.setText(symbolStack.get(symbolStack.size() - 1) + " " + addCommas(Double.parseDouble(calculatorCount)));
@@ -516,9 +516,9 @@ public class CalculatorPad extends Fragment {
     }
 
     public void updateCount(String number) {
-        if (calculatorCount.equals("0") && number.equals("0")) {
+        if ("0".equals(calculatorCount) && "0".equals(number)) {
             calculatorCount += ".0";
-        } else if (calculatorCount.equals("0")) {
+        } else if ("0".equals(calculatorCount)) {
             calculatorCount = number;
         } else {
             calculatorCount += number;
@@ -568,13 +568,13 @@ public class CalculatorPad extends Fragment {
                     resultCount /= calculatorStack.get(i);
                 }
             } else {
-                if (symbolStack.get(i).equals("+")) {
+                if ("+".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) + calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i).equals("-")) {
+                } else if ("-".equals(symbolStack.get(i))) {
                     resultCount -= (calculatorStack.get(i) - calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i).equals("x")) {
+                } else if ("x".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) * calculatorStack.get(i + 1));
-                } else if (symbolStack.get(i).equals("÷")) {
+                } else if ("÷".equals(symbolStack.get(i))) {
                     resultCount += (calculatorStack.get(i) / calculatorStack.get(i + 1));
                 }
             }
