@@ -184,6 +184,8 @@
         android:layout_height="60dp"
         android:background="@drawable/rounded_category_white"
         android:fontFamily="@font/montserrat_semibold"
+        android:contextClickable="true"
+        android:clickable="true"
         android:gravity="center"
         android:text="Geometry"
         android:textColor="@color/black"

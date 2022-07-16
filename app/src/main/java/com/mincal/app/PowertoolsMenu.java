@@ -70,6 +70,9 @@ public class PowertoolsMenu extends Fragment {
 
         PowerIcons powerIcons = new PowerIcons(userPowertools);
         HashMap<String, ArrayList<Integer>> powertoolsMap = powerIcons.getPowertools();
+
+        /* Debug Logs */
+
         Log.d("PowerIcons", "Original Drawables contains: " + powertoolsMap.values());
         Log.d("PowerIcons", "TinyDB contains: " + userPowertools);
         Log.d("PowerIcons", "HashMap contains: " + powertoolsMap);
