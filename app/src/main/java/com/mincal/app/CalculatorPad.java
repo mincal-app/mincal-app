@@ -597,8 +597,7 @@ public class CalculatorPad extends Fragment {
 
     private String addCommas(Double number) {
         DecimalFormat numberFormatter = new DecimalFormat("###,###.###");
-        String output = numberFormatter.format(number);
-        return output;
+        return numberFormatter.format(number);
     }
 
     @Override
