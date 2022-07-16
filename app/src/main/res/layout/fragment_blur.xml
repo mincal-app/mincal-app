@@ -6,11 +6,10 @@
     android:layout_height="550dp"
     tools:context=".BlurFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/powertools_menu_blur"
         android:layout_width="match_parent"
-        android:layout_height="440dp"
-        android:alpha="0.6"
-        android:background="@color/white"
+        android:layout_height="460dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

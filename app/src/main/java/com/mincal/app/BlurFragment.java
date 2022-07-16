@@ -1,12 +1,18 @@
 package com.mincal.app;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.RenderScriptBlur;
 
 public class BlurFragment extends Fragment {
 
@@ -37,6 +43,29 @@ public class BlurFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Views
+
+        BlurView blurView = getView().findViewById(R.id.powertools_menu_blur);
+
+        // Blur properties.
+
+        float radius = 0.3f;
+
+        View decorView = getActivity().getWindow().getDecorView();
+        ViewGroup rootView = (ViewGroup) decorView.findViewById(android.R.id.content);
+        Drawable windowBackground = decorView.getBackground();
+
+        blurView.setupWith(rootView)
+                .setFrameClearDrawable(windowBackground) // Optional
+                .setBlurAlgorithm(new RenderScriptBlur(getContext()))
+                .setBlurRadius(radius)
+                .setBlurAutoUpdate(true);
     }
 
     @Override
