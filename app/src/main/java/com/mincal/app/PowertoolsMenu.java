@@ -1,9 +1,11 @@
 package com.mincal.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -12,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -27,6 +31,14 @@ public class PowertoolsMenu extends Fragment {
 
     TinyDB tinydb;
     ArrayList<String> userPowertools;
+
+    // Views
+
+    TextView categoryButton;
+
+    // Animations
+
+    Animation scaleUp, scaleDown;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,6 +77,36 @@ public class PowertoolsMenu extends Fragment {
 
         tinydb = new TinyDB(getContext());
         userPowertools = tinydb.getListString("user_powertools");
+
+        // Views
+
+        categoryButton = getView().findViewById(R.id.category_button);
+
+        // Animations
+
+        // Click animations
+
+        scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.button_click_up);
+        scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.button_click_down);
+
+        // End of Animation Behavior
+
+        scaleDown.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // Nothing
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // TODO: Code for changing category icons.
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // Nothing
+            }
+        });
 
         // Getting icons, functions, and ids.
 
@@ -116,6 +158,14 @@ public class PowertoolsMenu extends Fragment {
                 Fragment powertoolsBlur = getActivity().getSupportFragmentManager().findFragmentByTag("powertools_menu");
                 if(powertoolsMenu!=null) powerMenuTransaction.remove(powertoolsMenu).commit();
                 if(powertoolsBlur!=null) blurTransaction.remove(powertoolsBlur).commit();
+            }
+        });
+
+        categoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                categoryButton.startAnimation(scaleUp);
+                categoryButton.startAnimation(scaleDown);
             }
         });
     }
