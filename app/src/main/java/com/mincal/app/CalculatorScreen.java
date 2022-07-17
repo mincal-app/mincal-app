@@ -69,17 +69,17 @@ public class CalculatorScreen extends Fragment {
 
         // Modify gradient color based on user's selected color.
 
-        if (userColor == "purple") {
+        if ("purple".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_purple);
-        } else if (userColor == "orange") {
+        } else if ("orange".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_orange);
-        } else if (userColor == "red") {
+        } else if ("red".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_red);
-        } else if (userColor == "green") {
+        } else if ("green".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_green);
-        } else if (userColor == "blue") {
+        } else if ("blue".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_blue);
-        } else if (userColor == "yellow") {
+        } else if ("yellow".equals(userColor)) {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_yellow);
         } else {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_purple);
