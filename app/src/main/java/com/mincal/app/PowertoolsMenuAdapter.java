@@ -37,7 +37,6 @@ public class PowertoolsMenuAdapter extends BaseAdapter {
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView powertoolIcon;
-        Log.d("Adapter", "Drawable Array: " + powerArray);
 
         if (convertView == null) {
             powertoolIcon = new ImageView(mContext);

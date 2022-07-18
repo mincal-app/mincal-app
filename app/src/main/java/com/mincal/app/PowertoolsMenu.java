@@ -31,6 +31,13 @@ public class PowertoolsMenu extends Fragment {
   // Views
 
   TextView categoryButton;
+  GridView powertoolsGrid;
+  TextView hidePowertools;
+
+  // Logic
+
+  int powertoolsCounter = 0;
+  String currentKey = "";
 
   // Animations
 
@@ -78,6 +85,40 @@ public class PowertoolsMenu extends Fragment {
     // Views
 
     categoryButton = getView().findViewById(R.id.category_button);
+    powertoolsGrid =
+            (GridView)getView().findViewById(R.id.powertools_grid);
+    hidePowertools = getView().findViewById(R.id.hide_powertools);
+
+    // Getting icons, functions, and ids.
+
+    PowerIcons powerIcons = new PowerIcons(userPowertools);
+    HashMap<String, ArrayList<Integer>> powertoolsMap =
+            powerIcons.getPowertools();
+
+    /* Debug Logs */
+
+    Log.d("PowerIcons",
+            "HashMap contains: " + powertoolsMap);
+
+    /* Returnable list of drawables */
+
+    ArrayList<Integer> powerDrawables = new ArrayList<>();
+
+    for (String toolKey : powertoolsMap.keySet()) {
+      for (int i = 0; i < powertoolsMap.get(toolKey).size(); i++) {
+        powerDrawables.add(powertoolsMap.get(toolKey).get(i));
+      }
+    }
+
+    Log.d("PowerIcons", "Drawables contains: " + powerDrawables);
+
+    // Choose icons and PowerTools based on user preferences
+
+    currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+
+    categoryButton.setText((String) powertoolsMap.keySet().toArray()[powertoolsCounter]);
+    powertoolsGrid.setAdapter(
+            new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
 
     // Animations
 
@@ -98,7 +139,22 @@ public class PowertoolsMenu extends Fragment {
 
       @Override
       public void onAnimationEnd(Animation animation) {
-        // TODO: Code for changing category icons.
+
+        if (powertoolsCounter < powertoolsMap.size() - 1) {
+          powertoolsCounter++;
+        } else {
+          powertoolsCounter = 0;
+        }
+
+        // Update category title.
+
+        currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+        categoryButton.setText(currentKey);
+
+        // Update icons.
+
+        powertoolsGrid.setAdapter(
+                new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
       }
 
       @Override
@@ -106,42 +162,6 @@ public class PowertoolsMenu extends Fragment {
         // Nothing
       }
     });
-
-    // Getting icons, functions, and ids.
-
-    PowerIcons powerIcons = new PowerIcons(userPowertools);
-    HashMap<String, ArrayList<Integer>> powertoolsMap =
-        powerIcons.getPowertools();
-
-    /* Debug Logs */
-
-    Log.d("PowerIcons",
-          "Original Drawables contains: " + powertoolsMap.values());
-    Log.d("PowerIcons", "TinyDB contains: " + userPowertools);
-    Log.d("PowerIcons", "HashMap contains: " + powertoolsMap);
-
-    // TODO: Look for a way to implement an ArrayList into the adapter as rows.
-
-    ArrayList<Integer> powerDrawables = new ArrayList<>();
-
-    for (String toolKey : powertoolsMap.keySet()) {
-      for (int i = 0; i < powertoolsMap.get(toolKey).size(); i++) {
-        powerDrawables.add(powertoolsMap.get(toolKey).get(i));
-      }
-    }
-
-    Log.d("PowerIcons", "Drawables contains: " + powerDrawables);
-
-    // Views
-
-    GridView powertoolsGrid =
-        (GridView)getView().findViewById(R.id.powertools_grid);
-    TextView hidePowertools = getView().findViewById(R.id.hide_powertools);
-
-    // Choose icons and PowerTools based on user preferences
-
-    powertoolsGrid.setAdapter(
-        new PowertoolsMenuAdapter(getContext(), powerDrawables));
 
     // Hide PowerTools Menu on Close button tap.
 
