@@ -1,6 +1,5 @@
 package com.mincal.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +11,10 @@ import android.widget.GridView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.google.common.primitives.Ints;
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,6 +23,7 @@ public class PowertoolsMenu extends Fragment {
   // TinyDB
 
   TinyDB tinydb;
+  String userColor;
   ArrayList<String> userPowertools;
 
   // Views
@@ -80,6 +78,7 @@ public class PowertoolsMenu extends Fragment {
     // Instance of SharedPreferences to store the user's name.
 
     tinydb = new TinyDB(getContext());
+    userColor = tinydb.getString("user_color");
     userPowertools = tinydb.getListString("user_powertools");
 
     // Views
@@ -204,6 +203,38 @@ public class PowertoolsMenu extends Fragment {
         categoryButton.startAnimation(scaleDown);
       }
     });
+
+    // Modify color based on user's selected color.
+
+    if ("purple".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_purple);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_purple);
+    } else if ("orange".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_orange);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_orange);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_orange);
+    } else if ("red".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_red);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_red);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_red);
+    } else if ("green".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_green);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_green);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_green);
+    } else if ("blue".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_blue);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_blue);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_blue);
+    } else if ("yellow".equals(userColor)) {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_yellow);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_yellow);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_yellow);
+    } else {
+      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
+      categoryButton.setBackgroundResource(R.drawable.rounded_category_purple);
+      powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_purple);
+    }
   }
 
   @Override
