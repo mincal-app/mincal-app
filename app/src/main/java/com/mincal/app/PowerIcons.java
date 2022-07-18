@@ -28,11 +28,13 @@ public class PowerIcons {
         for (int i = 0; i < powertoolIds.size(); i++) {
 
             String id = powertoolIds.get(i);
+            String idName = "";
             ArrayList<Integer> drawableIds = new ArrayList<>();
 
             // Get drawable
 
             if ("geometry_set".equals(id)) {
+                idName = "Statistics";
                 drawableIds.add(R.drawable.ic_sin_geometry);
                 drawableIds.add(R.drawable.ic_cos_geometry);
                 drawableIds.add(R.drawable.ic_tan_geometry);
@@ -44,14 +46,18 @@ public class PowerIcons {
                 drawableIds.add(R.drawable.ic_arctan_geometry);
                 drawableIds.add(R.drawable.ic_pi_geometry);
             } else if ("statistics_set".equals(id)) {
-                drawableIds.add(R.drawable.ic_chart_white);
+                idName = "Statistics";
+                drawableIds.add(R.drawable.ic_npr);
+                drawableIds.add(R.drawable.ic_ncr);
             } else if ("algebra_set".equals(id)) {
-                drawableIds.add(R.drawable.ic_chart_white);
+                idName = "Algebra";
+                drawableIds.add(R.drawable.ic_log);
+                drawableIds.add(R.drawable.ic_percent);
             }
 
             // Add to ArrayList
 
-            powertoolsMap.put(id, drawableIds);
+            powertoolsMap.put(idName, drawableIds);
         }
 
         return powertoolsMap;
