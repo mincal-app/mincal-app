@@ -85,20 +85,18 @@ public class PowertoolsMenu extends Fragment {
     // Views
 
     categoryButton = getView().findViewById(R.id.category_button);
-    powertoolsGrid =
-            (GridView)getView().findViewById(R.id.powertools_grid);
+    powertoolsGrid = (GridView)getView().findViewById(R.id.powertools_grid);
     hidePowertools = getView().findViewById(R.id.hide_powertools);
 
     // Getting icons, functions, and ids.
 
     PowerIcons powerIcons = new PowerIcons(userPowertools);
     HashMap<String, ArrayList<Integer>> powertoolsMap =
-            powerIcons.getPowertools();
+        powerIcons.getPowertools();
 
     /* Debug Logs */
 
-    Log.d("PowerIcons",
-            "HashMap contains: " + powertoolsMap);
+    Log.d("PowerIcons", "HashMap contains: " + powertoolsMap);
 
     /* Returnable list of drawables */
 
@@ -114,11 +112,12 @@ public class PowertoolsMenu extends Fragment {
 
     // Choose icons and PowerTools based on user preferences
 
-    currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+    currentKey = (String)powertoolsMap.keySet().toArray()[powertoolsCounter];
 
-    categoryButton.setText((String) powertoolsMap.keySet().toArray()[powertoolsCounter]);
+    categoryButton.setText(
+        (String)powertoolsMap.keySet().toArray()[powertoolsCounter]);
     powertoolsGrid.setAdapter(
-            new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
+        new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
 
     // Animations
 
@@ -148,13 +147,14 @@ public class PowertoolsMenu extends Fragment {
 
         // Update category title.
 
-        currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+        currentKey =
+            (String)powertoolsMap.keySet().toArray()[powertoolsCounter];
         categoryButton.setText(currentKey);
 
         // Update icons.
 
-        powertoolsGrid.setAdapter(
-                new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
+        powertoolsGrid.setAdapter(new PowertoolsMenuAdapter(
+            getContext(), powertoolsMap.get(currentKey)));
       }
 
       @Override
