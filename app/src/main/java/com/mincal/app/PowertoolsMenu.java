@@ -99,18 +99,6 @@ public class PowertoolsMenu extends Fragment {
     Log.d("PowerIcons",
             "HashMap contains: " + powertoolsMap);
 
-    /* Returnable list of drawables */
-
-    ArrayList<Integer> powerDrawables = new ArrayList<>();
-
-    for (String toolKey : powertoolsMap.keySet()) {
-      for (int i = 0; i < powertoolsMap.get(toolKey).size(); i++) {
-        powerDrawables.add(powertoolsMap.get(toolKey).get(i));
-      }
-    }
-
-    Log.d("PowerIcons", "Drawables contains: " + powerDrawables);
-
     // Choose icons and PowerTools based on user preferences
 
     currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
@@ -138,6 +126,8 @@ public class PowertoolsMenu extends Fragment {
 
       @Override
       public void onAnimationEnd(Animation animation) {
+
+        Log.d("Powertools Menu", "Size: " + powertoolsMap.size());
 
         if (powertoolsCounter < powertoolsMap.size() - 1) {
           powertoolsCounter++;
@@ -169,6 +159,13 @@ public class PowertoolsMenu extends Fragment {
     hidePowertools.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+
+        // Change powertoolsMenuOpened state.
+
+        tinydb.putBoolean("powertools_menu_opened", false);
+
+        // Hide powertools menu.
+
         FragmentManager fragmentManager =
             getActivity().getSupportFragmentManager();
         FragmentTransaction powerMenuTransaction =
@@ -183,16 +180,10 @@ public class PowertoolsMenu extends Fragment {
             R.anim.fade_out, R.anim.dummy_anim_swipe_left,
             R.anim.dummy_anim_swipe_left, R.anim.fade_out);
 
-        Fragment powertoolsMenu =
-            getActivity().getSupportFragmentManager().findFragmentByTag(
-                "blur_powertools_menu");
-        Fragment powertoolsBlur =
-            getActivity().getSupportFragmentManager().findFragmentByTag(
-                "powertools_menu");
-        if (powertoolsMenu != null)
-          powerMenuTransaction.remove(powertoolsMenu).commit();
-        if (powertoolsBlur != null)
-          blurTransaction.remove(powertoolsBlur).commit();
+        Fragment powertoolsMenu = getActivity().getSupportFragmentManager().findFragmentByTag("blur_powertools_menu");
+        Fragment powertoolsBlur = getActivity().getSupportFragmentManager().findFragmentByTag("powertools_menu");
+        if (powertoolsMenu != null) powerMenuTransaction.remove(powertoolsMenu).commit();
+        if (powertoolsBlur != null) blurTransaction.remove(powertoolsBlur).commit();
       }
     });
 

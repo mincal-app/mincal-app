@@ -27,6 +27,8 @@ public class PowerIcons {
 
         for (int i = 0; i < powertoolIds.size(); i++) {
 
+            Log.d("Icons", powertoolIds.size() + " id size!");
+
             String id = powertoolIds.get(i);
             String idName = "";
             ArrayList<Integer> drawableIds = new ArrayList<>();
@@ -34,7 +36,7 @@ public class PowerIcons {
             // Get drawable
 
             if ("geometry_set".equals(id)) {
-                idName = "Statistics";
+                idName = "Geometry";
                 drawableIds.add(R.drawable.ic_sin_geometry);
                 drawableIds.add(R.drawable.ic_cos_geometry);
                 drawableIds.add(R.drawable.ic_tan_geometry);
@@ -55,9 +57,12 @@ public class PowerIcons {
                 drawableIds.add(R.drawable.ic_percent);
             }
 
+            Log.d("Icons", idName + " added!");
+
             // Add to ArrayList
 
             powertoolsMap.put(idName, drawableIds);
+            Log.d("Icons", "Current map: " + powertoolsMap);
         }
 
         return powertoolsMap;

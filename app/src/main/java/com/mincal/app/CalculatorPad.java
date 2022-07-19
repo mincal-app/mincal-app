@@ -75,6 +75,7 @@ public class CalculatorPad extends Fragment {
 
     TinyDB tinydb;
     String userColor;
+    boolean powertoolsMenuOpened;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -161,6 +162,7 @@ public class CalculatorPad extends Fragment {
 
         tinydb = new TinyDB(getContext());
         userColor = tinydb.getString("user_color");
+        tinydb.putBoolean("powertools_menu_opened", false);
 
         // Modify gradient color based on user's selected color.
 
@@ -492,15 +494,29 @@ public class CalculatorPad extends Fragment {
         powertools.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                FragmentTransaction powerMenuTransaction = fragmentManager.beginTransaction();
-                FragmentTransaction blurTransaction = fragmentManager.beginTransaction();
-                powerMenuTransaction.setCustomAnimations(R.anim.swipe_in_left, R.anim.swipe_out_left);
-                blurTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
-                PowertoolsMenu powertoolsMenu = new PowertoolsMenu();
-                BlurFragment blurFragment = new BlurFragment();
-                blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
-                powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
+
+                powertoolsMenuOpened = tinydb.getBoolean("powertools_menu_opened");
+
+                if (!powertoolsMenuOpened) {
+
+                    // Change state
+
+                    tinydb.putBoolean("powertools_menu_opened", true);
+
+                    // Add fragment
+
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction powerMenuTransaction = fragmentManager.beginTransaction();
+                    FragmentTransaction blurTransaction = fragmentManager.beginTransaction();
+                    powerMenuTransaction.setCustomAnimations(R.anim.swipe_in_left, R.anim.swipe_out_left);
+                    blurTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                    PowertoolsMenu powertoolsMenu = new PowertoolsMenu();
+                    BlurFragment blurFragment = new BlurFragment();
+                    blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
+                    powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
+                } else {
+                    // It is opened, so nothing needs to be done.
+                }
             }
         });
     }
