@@ -14,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -84,40 +83,27 @@ public class PowertoolsMenu extends Fragment {
     // Views
 
     categoryButton = getView().findViewById(R.id.category_button);
-    powertoolsGrid =
-            (GridView)getView().findViewById(R.id.powertools_grid);
+    powertoolsGrid = (GridView)getView().findViewById(R.id.powertools_grid);
     hidePowertools = getView().findViewById(R.id.hide_powertools);
 
     // Getting icons, functions, and ids.
 
     PowerIcons powerIcons = new PowerIcons(userPowertools);
     HashMap<String, ArrayList<Integer>> powertoolsMap =
-            powerIcons.getPowertools();
+        powerIcons.getPowertools();
 
     /* Debug Logs */
 
-    Log.d("PowerIcons",
-            "HashMap contains: " + powertoolsMap);
-
-    /* Returnable list of drawables */
-
-    ArrayList<Integer> powerDrawables = new ArrayList<>();
-
-    for (String toolKey : powertoolsMap.keySet()) {
-      for (int i = 0; i < powertoolsMap.get(toolKey).size(); i++) {
-        powerDrawables.add(powertoolsMap.get(toolKey).get(i));
-      }
-    }
-
-    Log.d("PowerIcons", "Drawables contains: " + powerDrawables);
+    Log.d("PowerIcons", "HashMap contains: " + powertoolsMap);
 
     // Choose icons and PowerTools based on user preferences
 
-    currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+    currentKey = (String)powertoolsMap.keySet().toArray()[powertoolsCounter];
 
-    categoryButton.setText((String) powertoolsMap.keySet().toArray()[powertoolsCounter]);
+    categoryButton.setText(
+        (String)powertoolsMap.keySet().toArray()[powertoolsCounter]);
     powertoolsGrid.setAdapter(
-            new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
+        new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
 
     // Animations
 
@@ -139,6 +125,8 @@ public class PowertoolsMenu extends Fragment {
       @Override
       public void onAnimationEnd(Animation animation) {
 
+        Log.d("Powertools Menu", "Size: " + powertoolsMap.size());
+
         if (powertoolsCounter < powertoolsMap.size() - 1) {
           powertoolsCounter++;
         } else {
@@ -147,13 +135,14 @@ public class PowertoolsMenu extends Fragment {
 
         // Update category title.
 
-        currentKey = (String) powertoolsMap.keySet().toArray()[powertoolsCounter];
+        currentKey =
+            (String)powertoolsMap.keySet().toArray()[powertoolsCounter];
         categoryButton.setText(currentKey);
 
         // Update icons.
 
-        powertoolsGrid.setAdapter(
-                new PowertoolsMenuAdapter(getContext(), powertoolsMap.get(currentKey)));
+        powertoolsGrid.setAdapter(new PowertoolsMenuAdapter(
+            getContext(), powertoolsMap.get(currentKey)));
       }
 
       @Override
@@ -169,6 +158,13 @@ public class PowertoolsMenu extends Fragment {
     hidePowertools.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+
+        // Change powertoolsMenuOpened state.
+
+        tinydb.putBoolean("powertools_menu_opened", false);
+
+        // Hide powertools menu.
+
         FragmentManager fragmentManager =
             getActivity().getSupportFragmentManager();
         FragmentTransaction powerMenuTransaction =
@@ -207,31 +203,38 @@ public class PowertoolsMenu extends Fragment {
     // Modify color based on user's selected color.
 
     if ("purple".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_purple);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_purple);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_purple);
     } else if ("orange".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_orange);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_orange);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_orange);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_orange);
     } else if ("red".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_red);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_red);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_red);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_red);
     } else if ("green".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_green);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_green);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_green);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_green);
     } else if ("blue".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_blue);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_blue);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_blue);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_blue);
     } else if ("yellow".equals(userColor)) {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_yellow);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_yellow);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_yellow);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_yellow);
     } else {
-      hidePowertools.setBackgroundResource(R.drawable.calculator_pad_rounded_left_purple);
+      hidePowertools.setBackgroundResource(
+          R.drawable.calculator_pad_rounded_left_purple);
       categoryButton.setBackgroundResource(R.drawable.rounded_category_purple);
       powertoolsGrid.setBackgroundResource(R.drawable.powertools_menu_purple);
     }
