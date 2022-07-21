@@ -148,6 +148,7 @@
         android:id="@+id/pad_numbers_one"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@drawable/rounded_number_pad"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:text="1"

@@ -119,7 +119,9 @@ public class PowertoolsMenu extends Fragment {
     scaleDown.setAnimationListener(new Animation.AnimationListener() {
       @Override
       public void onAnimationStart(Animation animation) {
+
         // Nothing
+
       }
 
       @Override
