@@ -28,7 +28,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/drawable/rounded_category_red.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/drawable/rounded_category_white.xml" value="0.1945" />
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/drawable/rounded_category_yellow.xml" value="0.1" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/drawable/rounded_number_pad.xml" value="0.1195" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/layout/activity_settings.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/layout/fragment_blur.xml" value="0.2" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/layout/fragment_calculator_pad.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/layout/fragment_powertools_menu.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/mincal-app/app/src/main/res/layout/fragment_set_field.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/calculator_pad_rounded_blue.xml" value="0.1725" />

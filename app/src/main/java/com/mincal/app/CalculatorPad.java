@@ -515,7 +515,9 @@ public class CalculatorPad extends Fragment {
                     blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
                     powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
                 } else {
+
                     // It is opened, so nothing needs to be done.
+
                 }
             }
         });
