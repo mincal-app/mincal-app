@@ -497,7 +497,9 @@ public class CalculatorPad extends Fragment {
 
                 powertoolsMenuOpened = tinydb.getBoolean("powertools_menu_opened");
 
-                if (!powertoolsMenuOpened) {
+                if (powertoolsMenuOpened) {
+                    // It is opened, so nothing needs to be done.
+                } else {
 
                     // Change state
 
@@ -514,10 +516,6 @@ public class CalculatorPad extends Fragment {
                     BlurFragment blurFragment = new BlurFragment();
                     blurTransaction.add(R.id.calculator_pad_container, blurFragment, "blur_powertools_menu").commit();
                     powerMenuTransaction.add(R.id.calculator_pad_container, powertoolsMenu, "powertools_menu").commit();
-                } else {
-
-                    // It is opened, so nothing needs to be done.
-
                 }
             }
         });
