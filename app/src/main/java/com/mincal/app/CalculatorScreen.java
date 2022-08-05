@@ -1,15 +1,18 @@
 package com.mincal.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CalculatorScreen extends Fragment {
@@ -18,6 +21,7 @@ public class CalculatorScreen extends Fragment {
 
     ConstraintLayout calculatorScreen;
     TextView screenResult;
+    ImageView settingsButton;
 
     // TinyDB
 
@@ -61,6 +65,7 @@ public class CalculatorScreen extends Fragment {
 
         calculatorScreen = getView().findViewById(R.id.calculator_screen);
         screenResult = getView().findViewById(R.id.screen_result);
+        settingsButton = getView().findViewById(R.id.screen_tools);
 
         // Instance of SharedPreferences to store the user's name.
 
@@ -84,6 +89,17 @@ public class CalculatorScreen extends Fragment {
         } else {
             calculatorScreen.setBackgroundResource(R.drawable.calculator_screen_gradient_purple);
         }
+
+        // Listeners
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle i = ActivityOptionsCompat.makeCustomAnimation(getContext(),
+                        android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
+                startActivity(new Intent(getContext(), Settings.class), i);
+            }
+        });
     }
 
     @Override
