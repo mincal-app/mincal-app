@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/arrow_back_settings"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="40dp"
         android:src="@drawable/ic_arrow_back_white"

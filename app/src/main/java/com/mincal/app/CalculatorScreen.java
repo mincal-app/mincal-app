@@ -98,6 +98,7 @@ public class CalculatorScreen extends Fragment {
                 Bundle i = ActivityOptionsCompat.makeCustomAnimation(getContext(),
                         android.R.anim.fade_in, android.R.anim.fade_out).toBundle();
                 startActivity(new Intent(getContext(), Settings.class), i);
+                getActivity().finish();
             }
         });
     }
