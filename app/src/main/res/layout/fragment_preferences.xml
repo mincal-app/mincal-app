@@ -44,7 +44,7 @@
         app:layout_constraintStart_toStartOf="@+id/preferences_title"
         app:layout_constraintTop_toBottomOf="@+id/preferences_title" />
 
-    <!-- Home Settings -->
+    <!-- Preferences -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/color_palette_button"
@@ -82,7 +82,7 @@
             android:layout_height="20dp"
             android:layout_marginRight="40dp"
             android:paddingBottom="10px"
-            android:src="@drawable/ic_pencil"
+            android:src="@drawable/ic_palette"
             app:layout_constraintBottom_toBottomOf="@+id/color_palette_button_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -127,7 +127,7 @@
             android:layout_height="20dp"
             android:layout_marginRight="40dp"
             android:paddingBottom="10px"
-            android:src="@drawable/ic_hat_wizard"
+            android:src="@drawable/ic_user_card"
             app:layout_constraintBottom_toBottomOf="@+id/my_info_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -172,7 +172,7 @@
             android:layout_height="20dp"
             android:layout_marginRight="40dp"
             android:paddingBottom="10px"
-            android:src="@drawable/ic_badge"
+            android:src="@drawable/ic_compass"
             app:layout_constraintBottom_toBottomOf="@+id/help_center_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -217,7 +217,7 @@
             android:layout_height="20dp"
             android:layout_marginRight="40dp"
             android:paddingBottom="10px"
-            android:src="@drawable/ic_badge"
+            android:src="@drawable/ic_terms"
             app:layout_constraintBottom_toBottomOf="@+id/terms_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -262,7 +262,7 @@
             android:layout_height="20dp"
             android:layout_marginRight="40dp"
             android:paddingBottom="10px"
-            android:src="@drawable/ic_badge"
+            android:src="@drawable/ic_star"
             app:layout_constraintBottom_toBottomOf="@+id/acknowledgments_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
