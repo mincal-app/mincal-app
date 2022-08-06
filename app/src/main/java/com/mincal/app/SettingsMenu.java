@@ -85,6 +85,7 @@ public class SettingsMenu extends Fragment {
                 SettingsMenu settingsHome = new SettingsMenu();
                 Preferences preferencesFragment = new Preferences();
                 fragmentTransaction.remove(settingsHome);
+                fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
                 fragmentTransaction.replace(R.id.settings_container, preferencesFragment).commit();
             }
         });

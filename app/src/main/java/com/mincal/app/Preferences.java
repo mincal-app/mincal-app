@@ -1,21 +1,25 @@
 package com.mincal.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Preferences#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Preferences extends Fragment {
+
+    // Views
+
+    ImageView backToSettings;
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -49,6 +53,27 @@ public class Preferences extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Views
+
+        backToSettings = getView().findViewById(R.id.arrow_back_settings_home);
+
+        // TinyDB
+
+        // Listeners
+
+        backToSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Preferences preferencesFragment = new Preferences();
+                SettingsMenu settingsHome = new SettingsMenu();
+                fragmentTransaction.remove(preferencesFragment);
+                fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                fragmentTransaction.replace(R.id.settings_container, settingsHome).commit();
+            }
+        });
     }
 
     @Override
