@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".SettingsMenu">
+
+    <ImageView
+        android:id="@+id/arrow_back_settings"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ic_arrow_back_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settings_home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Hey there, Joel!"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/arrow_back_settings"
+        app:layout_constraintTop_toTopOf="@+id/arrow_back_settings"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/settings_home_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="What would you like to do?"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/settings_home_title"
+        app:layout_constraintTop_toBottomOf="@+id/settings_home_title" />
+
+    <!-- Home Settings -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/rounded_settings_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_home_subtitle">
+
+        <TextView
+            android:id="@+id/settings_button_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:paddingBottom="10px"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Settings"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/settings_button_icon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/settings_button_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="40dp"
+            android:paddingBottom="10px"
+            android:src="@drawable/ic_pencil"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_button_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/settings_button_name"
+            app:layout_constraintTop_toTopOf="@+id/settings_button_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_powertools_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/rounded_settings_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_button">
+
+        <TextView
+            android:id="@+id/my_powertools_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:paddingBottom="10px"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="My Powertools"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/my_powertools_icon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/my_powertools_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="40dp"
+            android:paddingBottom="10px"
+            android:src="@drawable/ic_hat_wizard"
+            app:layout_constraintBottom_toBottomOf="@+id/my_powertools_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/my_powertools_name"
+            app:layout_constraintTop_toTopOf="@+id/my_powertools_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/achievements_button"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:background="@drawable/rounded_settings_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_powertools_button">
+
+        <TextView
+            android:id="@+id/achievements_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:paddingBottom="10px"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Achievements"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/achievements_icon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/achievements_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="40dp"
+            android:paddingBottom="10px"
+            android:src="@drawable/ic_badge"
+            app:layout_constraintBottom_toBottomOf="@+id/achievements_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/achievements_name"
+            app:layout_constraintTop_toTopOf="@+id/achievements_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
